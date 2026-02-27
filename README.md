@@ -1,7 +1,8 @@
 
   # Personal Portfolio Website UI
 
-  This is a code bundle for Personal Portfolio Website UI. The original project is available at https://www.figma.com/design/v4HyPO3TteXjM2fSc3melJ/Personal-Portfolio-Website-UI.
+  This is a code bundle for Personal Portfolio Website UI. The original project is available at 
+  https://codewithaesthhetic.netlify.app/
 
   ## Running the code
 
