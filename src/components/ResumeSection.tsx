@@ -55,7 +55,7 @@ export function ResumeSection() {
                 <div className="flex flex-wrap gap-4">
                   {/* View */}
                   <a
-                    href="/Personal Portfolio Website UI/src/Resume/Pdf-resume.docx"
+                    href="./public/resume/harshresume.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 px-6 py-3 border border-red-500/40 text-red-400 rounded-full hover:bg-red-500/10 transition-all duration-300 font-medium"
@@ -66,7 +66,7 @@ export function ResumeSection() {
 
                   {/* Download */}
                   <a
-                    href="/Personal Portfolio Website UI/src/Resume/Pdf-resume.docx"
+                    href="./public/resume/harshresume.pdf"
                     download
                     className="inline-flex items-center gap-2 px-6 py-3 bg-red-600 text-white rounded-full hover:bg-red-500 transition-all duration-300 shadow-lg shadow-red-500/30 font-medium"
                   >
