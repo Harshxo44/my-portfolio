@@ -22,7 +22,7 @@ export function ProjectsSection() {
       title: "E-Purse — Expense & Budget Tracker",
       description:
         "A finance dashboard web application built with React that allows users to track expenses, manage budgets, and analyze spending patterns through a clean and responsive interface.",
-      techStack: ["React", "JavaScript", "CSS"],
+      techStack: ["React", "JavaScript", "CSS", "TypeScript"],
       live: "",
       github: "https://github.com/Harshxo44/E-Purse",
     },

@@ -1,4 +1,4 @@
-import { Code2, Database, Wrench, Layers } from "lucide-react";
+import { Code2, Database, Wrench, Layers, Award } from "lucide-react";
 
 export function SkillsSection() {
   const skillCategories = [
@@ -29,7 +29,61 @@ export function SkillsSection() {
     {
       title: "Tools & Platforms",
       icon: Wrench,
-      skills: ["Git", "GitHub", "AWS (Fundamentals)"],
+      skills: ["Git", "GitHub", "AWS (Fundamentals)", "Netlify"],
+    },
+    {
+      title: "Certifications",
+      icon: Award,
+      skills: [
+        {
+          name: "Introduction to Software Engineering - IBM",
+          link: "/public/certification/INTROSOFT.pdf",
+        },
+        {
+          name: "AI for Spring Development - IBM",
+          link: "/public/certification/aiIBM.pdf",
+        },
+        {
+          name: "AWS Cloud Foundations",
+          link: "/public/certification/awscloud.pdf",
+        },
+
+        {
+          name: "Cloud Native - IBM",
+          link: "/public/certification/cloudnative.pdf",
+        },
+        {
+          name: "Generative AI Elevate Software Dev - IBM",
+          link: "/public/certification/GENAI.pdf",
+        },
+        { name: "Git and Hub", link: "/public/certification/GITGAT.pdf" },
+        {
+          name: "Design Patterns & Testing",
+          link: "/public/certification/DESIGN.pdf",
+        },
+        { name: "HTML CSS JAVA", link: "/public/certification/FRONTEND.pdf" },
+        {
+          name: "Skill Building AI - IBM",
+          link: "/public/certification/IBMSKILL.pdf",
+        },
+        {
+          name: "Java Fundamentals - IBM",
+          link: "/public/certification/JAVAFUND.pdf",
+        },
+        {
+          name: "JD with Database",
+          link: "/public/certification/JDDATA.pdf",
+        },
+        { name: "OOPJ - IBM", link: "/public/certification/OOPJ.pdf" },
+        {
+          name: "Spring Framework - IBM",
+          link: "/public/certification/SPRINGFRAME.pdf",
+        },
+        {
+          name: "Hackathon Certificate",
+          link: "/public/certification/hackcert.pdf",
+        },
+      ],
     },
   ];
 
@@ -76,23 +130,26 @@ export function SkillsSection() {
                 </div>
 
                 {/* Skills */}
-                <div className="space-y-2">
-                  {category.skills.map((skill) => (
+                <div className="space-y-2 max-h-80 overflow-y-auto pr-2">
+                  {category.skills.map((skill, index) => (
                     <div
-                      key={skill}
-                      className="flex items-center gap-2 text-gray-300 transition-transform group-hover:translate-x-1"
+                      key={index}
+                      className="flex items-center gap-2 text-gray-300"
                     >
                       <span className="text-red-500 text-sm">▸</span>
-                      <span className="font-medium">
-                        {skill.split("").map((char, index) => (
-                          <span
-                            key={index}
-                            className="inline-block hover:scale-125 hover:-translate-y-1 hover:text-white transition-all duration-150 cursor-default"
-                          >
-                            {char === " " ? "\u00A0" : char}
-                          </span>
-                        ))}
-                      </span>
+
+                      {typeof skill === "string" ? (
+                        <span className="font-medium">{skill}</span>
+                      ) : (
+                        <a
+                          href={skill.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="font-medium hover:text-white hover:underline transition"
+                        >
+                          {skill.name}
+                        </a>
+                      )}
                     </div>
                   ))}
                 </div>
