@@ -1,4 +1,5 @@
-import { Code2, Database, Wrench, Layers, Award } from "lucide-react";
+import { Code2, Database, Wrench, Layers } from "lucide-react";
+import { motion, Variants } from "framer-motion";
 
 export function SkillsSection() {
   const skillCategories = [
@@ -7,6 +8,7 @@ export function SkillsSection() {
       icon: Code2,
       skills: [
         "React",
+        "TypeScript",
         "JavaScript",
         "HTML",
         "CSS",
@@ -19,7 +21,7 @@ export function SkillsSection() {
     {
       title: "Backend & Programming",
       icon: Layers,
-      skills: ["Java", "Python (Basic)", "Node.js (Basic)", "C"],
+      skills: ["Java", "Python (Basic)", "Node.js (Basic)", "Express", "C"],
     },
     {
       title: "Databases",
@@ -31,132 +33,105 @@ export function SkillsSection() {
       icon: Wrench,
       skills: ["Git", "GitHub", "AWS (Fundamentals)", "Netlify"],
     },
-    {
-      title: "Certifications",
-      icon: Award,
-      skills: [
-        {
-          name: "Introduction to Software Engineering - IBM",
-          link: "/public/certification/INTROSOFT.pdf",
-        },
-        {
-          name: "AI for Spring Development - IBM",
-          link: "/public/certification/aiIBM.pdf",
-        },
-        {
-          name: "AWS Cloud Foundations",
-          link: "/public/certification/awscloud.pdf",
-        },
-
-        {
-          name: "Cloud Native - IBM",
-          link: "/public/certification/cloudnative.pdf",
-        },
-        {
-          name: "Generative AI Elevate Software Dev - IBM",
-          link: "/public/certification/GENAI.pdf",
-        },
-        { name: "Git and Hub", link: "/public/certification/GITGAT.pdf" },
-        {
-          name: "Design Patterns & Testing",
-          link: "/public/certification/DESIGN.pdf",
-        },
-        { name: "HTML CSS JAVA", link: "/public/certification/FRONTEND.pdf" },
-        {
-          name: "Skill Building AI - IBM",
-          link: "/public/certification/IBMSKILL.pdf",
-        },
-        {
-          name: "Java Fundamentals - IBM",
-          link: "/public/certification/JAVAFUND.pdf",
-        },
-        {
-          name: "JD with Database",
-          link: "/public/certification/JDDATA.pdf",
-        },
-        { name: "OOPJ - IBM", link: "/public/certification/OOPJ.pdf" },
-        {
-          name: "Spring Framework - IBM",
-          link: "/public/certification/SPRINGFRAME.pdf",
-        },
-        {
-          name: "Hackathon Certificate",
-          link: "/public/certification/hackcert.pdf",
-        },
-      ],
-    },
   ];
+
+  const containerVariants: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants: Variants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { type: "spring", stiffness: 300, damping: 24 }
+    },
+  };
+
+  const headerVariants: Variants = {
+    hidden: { opacity: 0, scale: 0.9 },
+    visible: { opacity: 1, scale: 1, transition: { duration: 0.5, ease: "easeOut" } },
+  };
 
   return (
     <section
       id="skills"
-      className="min-h-screen flex items-center justify-center bg-[#0a0a0f] border-t border-red-500/20"
+      className="min-h-screen flex items-center justify-center bg-[#030014]/50 border-t border-violet-500/20"
     >
-      <div className="max-w-[1440px] w-full px-8 py-20">
+      <div className="max-w-[1440px] w-full px-8 py-20 overflow-hidden">
         {/* Header */}
-        <div className="mb-12">
-          <span className="text-red-500 text-sm tracking-wider uppercase font-semibold">
+        <motion.div 
+          className="mb-12"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={headerVariants}
+        >
+          <span className="text-violet-500 text-sm tracking-wider uppercase font-semibold">
             Skills & Expertise
           </span>
           <h2 className="text-5xl text-white mt-2 font-bold">
             {"Tech Stack".split("").map((char, index) => (
               <span
                 key={index}
-                className="inline-block hover:scale-110 hover:-translate-y-1 hover:text-red-500 transition-all duration-200 cursor-default"
+                className="inline-block hover:scale-110 hover:-translate-y-1 hover:text-violet-500 transition-all duration-200 cursor-default"
               >
                 {char === " " ? "\u00A0" : char}
               </span>
             ))}
           </h2>
-        </div>
+        </motion.div>
 
-        {/* Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* Column Layout */}
+        <motion.div 
+          className="flex flex-col space-y-4 max-w-4xl mx-auto"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+        >
           {skillCategories.map((category) => {
             const Icon = category.icon;
             return (
-              <div
+              <motion.div
                 key={category.title}
-                className="bg-[#1a1a1f] backdrop-blur-xl border border-red-500/30 hover:border-red-500/50 rounded-2xl p-6 transition-all duration-300 hover:scale-105 shadow-xl shadow-red-500/10 hover:shadow-2xl"
+                variants={itemVariants}
+                className="bg-[#0a002a]/60 backdrop-blur-xl border border-violet-500/30 hover:border-violet-500/50 rounded-2xl p-4 transition-all duration-300 hover:scale-[1.02] hover:-translate-y-1 shadow-lg shadow-violet-500/10 hover:shadow-xl flex flex-col md:flex-row md:items-center gap-4"
               >
-                {/* Card header */}
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="p-3 rounded-xl bg-[#0a0a0f] shadow-lg">
-                    <Icon className="w-6 h-6 text-red-500" />
+                {/* Row header */}
+                <div className="flex items-center gap-3 shrink-0 md:w-64">
+                  <div className="p-2.5 rounded-xl bg-[#030014]/50 shadow-md group-hover:bg-violet-500/10 transition-colors">
+                    <Icon className="w-5 h-5 text-violet-500" />
                   </div>
-                  <h3 className="text-xl text-white font-semibold">
+                  <h3 className="text-lg text-white font-medium">
                     {category.title}
                   </h3>
                 </div>
 
-                {/* Skills */}
-                <div className="space-y-2 max-h-80 overflow-y-auto pr-2">
+                {/* Skills content area (horizontal wrap) */}
+                <div className="flex flex-wrap gap-2 flex-grow">
                   {category.skills.map((skill, index) => (
-                    <div
+                    <motion.div
+                      whileHover={{ scale: 1.05 }}
+                      transition={{ type: "tween", duration: 0.2 }}
                       key={index}
-                      className="flex items-center gap-2 text-gray-300"
+                      className="flex items-center text-gray-300 bg-[#030014]/40 px-3 py-1.5 rounded-full border border-violet-500/20 hover:border-violet-500/40 hover:bg-violet-500/10 transition-colors text-sm"
                     >
-                      <span className="text-red-500 text-sm">▸</span>
-
-                      {typeof skill === "string" ? (
-                        <span className="font-medium">{skill}</span>
-                      ) : (
-                        <a
-                          href={skill.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="font-medium hover:text-white hover:underline transition"
-                        >
-                          {skill.name}
-                        </a>
-                      )}
-                    </div>
+                      <span>{skill as string}</span>
+                    </motion.div>
                   ))}
                 </div>
-              </div>
+              </motion.div>
             );
           })}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

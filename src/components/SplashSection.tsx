@@ -37,7 +37,7 @@ export function SplashSection() {
   return (
     <section
       id="home"
-      className="min-h-screen flex flex-col items-center justify-center relative bg-black px-6"
+      className="min-h-screen flex flex-col items-center justify-center relative bg-[#030014] px-6"
     >
       {/* Subtle background grid */}
       <div className="absolute inset-0 opacity-[0.05] pointer-events-none">
@@ -48,7 +48,7 @@ export function SplashSection() {
       <div className="text-center space-y-6 relative z-10">
         {/* Name */}
         <h1 className="text-7xl md:text-8xl tracking-tight text-white font-bold">
-          <span className="hover:text-red-500 transition-colors duration-300">
+          <span className="hover:text-violet-500 transition-colors duration-300">
             Harsh&nbsp;Sharma
           </span>
         </h1>
@@ -58,7 +58,7 @@ export function SplashSection() {
           <p className="text-2xl text-gray-400 font-medium">
             {text}
             <span
-              className={`inline-block w-[2px] h-7 bg-red-500 ml-1 align-middle ${
+              className={`inline-block w-[2px] h-7 bg-violet-500 ml-1 align-middle ${
                 showCursor ? "opacity-100" : "opacity-0"
               }`}
             />
@@ -75,7 +75,7 @@ export function SplashSection() {
         <div className="pt-8">
           <button
             onClick={scrollToAbout}
-            className="px-8 py-3 bg-red-600 text-white rounded-full hover:bg-red-500 transition-all duration-300 shadow-lg shadow-red-500/30 font-medium"
+            className="px-8 py-3 bg-violet-600 text-white rounded-full hover:bg-violet-500 transition-all duration-300 shadow-lg shadow-violet-500/30 font-medium"
           >
             Explore Portfolio
           </button>

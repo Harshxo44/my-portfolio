@@ -2,13 +2,13 @@ import { Github, Linkedin, Twitter, Mail, Heart } from 'lucide-react';
 
 export function Footer() {
   return (
-    <footer className="bg-[#0a0a0a] border-t border-[#1a1a1a]">
+    <footer className="bg-[#030014]/50 border-t border-violet-500/20">
       <div className="max-w-[1440px] mx-auto px-8 py-12">
         <div className="flex flex-col items-center space-y-6">
-          <div className="text-2xl tracking-tight">
-            <span className="text-[#ef4444]">&lt;</span>
-            <span className="text-white">JD</span>
-            <span className="text-[#22c55e]">/&gt;</span>
+          <div className="flex items-center cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+            <span className="text-white font-bold text-3xl hover:text-violet-400 transition-colors duration-300 tracking-tighter">
+              Harsh<span className="text-violet-500 text-4xl leading-none">.</span>
+            </span>
           </div>
           
           <div className="flex items-center gap-6">
@@ -46,7 +46,7 @@ export function Footer() {
           
           <div className="flex items-center gap-2 text-sm text-gray-500">
             <span>© 2026 Harsh Sharma. Built with</span>
-            <Heart className="w-4 h-4 text-[#ef4444]" />
+            <Heart className="w-4 h-4 text-[#8b5cf6]" />
             <span>and React</span>
           </div>
         </div>

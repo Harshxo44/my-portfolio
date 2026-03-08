@@ -55,12 +55,12 @@ export function ProjectsSection() {
   return (
     <section
       id="projects"
-      className="min-h-screen flex items-center justify-center bg-[#0a0a0f] border-t border-red-500/20"
+      className="min-h-screen flex items-center justify-center bg-[#030014]/50 border-t border-violet-500/20"
     >
       <div className="max-w-[1440px] w-full px-8 py-20">
         {/* Header */}
         <div className="mb-12">
-          <span className="text-red-500 text-sm tracking-wider uppercase font-semibold">
+          <span className="text-violet-500 text-sm tracking-wider uppercase font-semibold">
             Projects
           </span>
           <h2 className="text-5xl text-white mt-2 font-bold">Featured Work</h2>
@@ -71,7 +71,7 @@ export function ProjectsSection() {
           {projects.map((project) => (
             <div
               key={project.title}
-              className="bg-[#1a1a1f] border border-red-500/20 rounded-2xl p-6 hover:border-red-500/40 transition-all duration-300 shadow-xl shadow-red-500/10 hover:shadow-2xl"
+              className="bg-[#0a002a]/60 border border-violet-500/20 rounded-2xl p-6 hover:border-violet-500/40 transition-all duration-300 shadow-xl shadow-violet-500/10 hover:shadow-2xl"
             >
               <h3 className="text-xl text-white mb-3 font-semibold">
                 {project.title}
@@ -86,7 +86,7 @@ export function ProjectsSection() {
                 {project.techStack.map((tech) => (
                   <span
                     key={tech}
-                    className="px-2 py-1 bg-black border border-red-500/30 rounded text-xs text-gray-300"
+                    className="px-2 py-1 bg-[#030014] border border-violet-500/30 rounded text-xs text-gray-300"
                   >
                     {tech}
                   </span>
@@ -100,7 +100,7 @@ export function ProjectsSection() {
                     href={project.live}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-4 py-2 bg-red-600 text-white rounded-full hover:bg-red-500 transition-all text-sm"
+                    className="flex items-center gap-2 px-4 py-2 bg-violet-600 text-white rounded-full hover:bg-violet-500 transition-all text-sm"
                   >
                     <ExternalLink className="w-4 h-4" />
                     Visit
@@ -111,7 +111,7 @@ export function ProjectsSection() {
                   href={project.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 border border-red-500/40 text-red-400 rounded-full hover:bg-red-500/10 transition-all"
+                  className="p-2 border border-violet-500/40 text-violet-400 rounded-full hover:bg-violet-500/10 transition-all"
                 >
                   <Github className="w-4 h-4" />
                 </a>

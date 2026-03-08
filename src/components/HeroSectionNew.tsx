@@ -10,7 +10,7 @@ export function HeroSectionNew() {
   };
 
   return (
-    <section className="min-h-screen flex items-center justify-center bg-[#0a0a0f] relative overflow-hidden border-t border-red-500/20">
+    <section className="min-h-screen flex items-center justify-center bg-[#030014]/50 relative overflow-hidden border-t border-violet-500/20">
       {/* Subtle grid */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(239,68,68,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(239,68,68,0.04)_1px,transparent_1px)] bg-[size:80px_80px]" />
 
@@ -26,7 +26,7 @@ export function HeroSectionNew() {
             transition={{ duration: 0.6 }}
             className="inline-block mb-4"
           >
-            <span className="px-4 py-2 bg-red-500/10 backdrop-blur-md border border-red-500/30 rounded-full text-sm text-red-400 font-medium">
+            <span className="px-4 py-2 bg-violet-500/10 backdrop-blur-md border border-violet-500/30 rounded-full text-sm text-violet-400 font-medium">
               🎓 Student • UI/UX & Frontend Developer
             </span>
           </motion.div>
@@ -42,14 +42,14 @@ export function HeroSectionNew() {
               {"Designing and building".split("").map((char, index) => (
                 <span
                   key={index}
-                  className="inline-block hover:scale-110 hover:-translate-y-1 hover:text-red-500 transition-all duration-200 cursor-default"
+                  className="inline-block hover:scale-110 hover:-translate-y-1 hover:text-violet-500 transition-all duration-200 cursor-default"
                 >
                   {char === " " ? "\u00A0" : char}
                 </span>
               ))}
             </span>
             <br />
-            <span className="text-red-500">
+            <span className="text-violet-500">
               {"meaningful digital experiences".split("").map((char, index) => (
                 <span
                   key={index}
@@ -89,7 +89,7 @@ export function HeroSectionNew() {
               }}
               whileTap={{ scale: 0.95 }}
               onClick={scrollToProjects}
-              className="px-6 py-3 bg-red-600 text-white rounded-full hover:bg-red-500 transition-all duration-300 flex items-center gap-2 shadow-lg shadow-red-500/30 font-medium"
+              className="px-6 py-3 bg-violet-600 text-white rounded-full hover:bg-violet-500 transition-all duration-300 flex items-center gap-2 shadow-lg shadow-violet-500/30 font-medium"
             >
               View Projects
               <ArrowRight className="w-4 h-4" />
@@ -102,7 +102,7 @@ export function HeroSectionNew() {
                 borderColor: "rgba(239,68,68,0.6)",
               }}
               whileTap={{ scale: 0.95 }}
-              className="px-6 py-3 border border-white/20 text-gray-300 rounded-full transition-all duration-300 flex items-center gap-2 font-medium hover:text-white hover:border-red-500/40"
+              className="px-6 py-3 border border-white/20 text-gray-300 rounded-full transition-all duration-300 flex items-center gap-2 font-medium hover:text-white hover:border-violet-500/40"
             >
               <Download className="w-4 h-4" />
               Download Resume

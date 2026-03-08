@@ -4,11 +4,11 @@ export function ContactSection() {
   return (
     <section
       id="contact"
-      className="min-h-screen flex items-center justify-center bg-black border-t border-[#1a1a1a]"
+      className="min-h-screen flex items-center justify-center bg-[#030014] border-t border-violet-500/30"
     >
       <div className="max-w-[1440px] w-full px-8 py-20">
         <div className="mb-12">
-          <span className="text-[#ef4444] text-sm tracking-wider uppercase">
+          <span className="text-[#8b5cf6] text-sm tracking-wider uppercase">
             Get In Touch
           </span>
           <h2 className="text-5xl text-white mt-2">Let's Work Together</h2>
@@ -24,14 +24,14 @@ export function ContactSection() {
 
             <div className="space-y-6">
               <div className="flex items-center gap-4">
-                <div className="p-3 bg-[#0a0a0a] border border-[#1a1a1a] rounded-lg">
-                  <Mail className="w-6 h-6 text-[#ef4444]" />
+                <div className="p-3 bg-[#0a002a]/60 border border-violet-500/30 rounded-lg">
+                  <Mail className="w-6 h-6 text-[#8b5cf6]" />
                 </div>
                 <div>
                   <div className="text-sm text-gray-500">Email</div>
                   <a
                     href="mailto:harshsharmag98@gmail.com"
-                    className="text-white hover:text-[#ef4444] transition-colors"
+                    className="text-white hover:text-[#8b5cf6] transition-colors"
                   >
                     harshsharmag98@gmail.com
                   </a>
@@ -39,8 +39,8 @@ export function ContactSection() {
               </div>
 
               <div className="flex items-center gap-4">
-                <div className="p-3 bg-[#0a0a0a] border border-[#1a1a1a] rounded-lg">
-                  <Github className="w-6 h-6 text-[#ef4444]" />
+                <div className="p-3 bg-[#0a002a]/60 border border-violet-500/30 rounded-lg">
+                  <Github className="w-6 h-6 text-[#8b5cf6]" />
                 </div>
                 <div>
                   <div className="text-sm text-gray-500">GitHub</div>
@@ -48,7 +48,7 @@ export function ContactSection() {
                     href="https://github.com/Harshxo44"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-white hover:text-[#ef4444] transition-colors"
+                    className="text-white hover:text-[#8b5cf6] transition-colors"
                   >
                     Github: Harshcodes
                   </a>
@@ -56,8 +56,8 @@ export function ContactSection() {
               </div>
 
               <div className="flex items-center gap-4">
-                <div className="p-3 bg-[#0a0a0a] border border-[#1a1a1a] rounded-lg">
-                  <Linkedin className="w-6 h-6 text-[#ef4444]" />
+                <div className="p-3 bg-[#0a002a]/60 border border-violet-500/30 rounded-lg">
+                  <Linkedin className="w-6 h-6 text-[#8b5cf6]" />
                 </div>
                 <div>
                   <div className="text-sm text-gray-500">LinkedIn</div>
@@ -65,7 +65,7 @@ export function ContactSection() {
                     href="https://www.linkedin.com/in/harshxo44/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-white hover:text-[#ef4444] transition-colors"
+                    className="text-white hover:text-[#8b5cf6] transition-colors"
                   >
                     LinkedIn
                   </a>
@@ -73,8 +73,8 @@ export function ContactSection() {
               </div>
 
               <div className="flex items-center gap-4">
-                <div className="p-3 bg-[#0a0a0a] border border-[#1a1a1a] rounded-lg">
-                  <Instagram className="w-6 h-6 text-[#ef4444]" />
+                <div className="p-3 bg-[#0a002a]/60 border border-violet-500/30 rounded-lg">
+                  <Instagram className="w-6 h-6 text-[#8b5cf6]" />
                 </div>
                 <div>
                   <div className="text-sm text-gray-500">Instagram</div>
@@ -82,7 +82,7 @@ export function ContactSection() {
                     href="https://www.instagram.com/harshh.ok/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-white hover:text-[#ef4444] transition-colors"
+                    className="text-white hover:text-[#8b5cf6] transition-colors"
                   >
                     @harshh.ok
                   </a>
@@ -91,7 +91,7 @@ export function ContactSection() {
             </div>
           </div>
 
-          <div className="bg-[#0a0a0a] border border-[#1a1a1a] rounded-lg p-8">
+          <div className="bg-[#0a002a]/60 border border-violet-500/30 rounded-lg p-8">
             <h3 className="text-2xl text-white mb-6">Send a Message</h3>
             <form className="space-y-4">
               <div>
@@ -104,7 +104,7 @@ export function ContactSection() {
                 <input
                   type="text"
                   id="name"
-                  className="w-full px-4 py-3 bg-black border border-[#1a1a1a] rounded-md text-white focus:outline-none focus:border-[#ef4444] transition-colors"
+                  className="w-full px-4 py-3 bg-[#030014] border border-violet-500/30 rounded-md text-white focus:outline-none focus:border-[#8b5cf6] transition-colors"
                   placeholder="Your name"
                 />
               </div>
@@ -119,7 +119,7 @@ export function ContactSection() {
                 <input
                   type="email"
                   id="email"
-                  className="w-full px-4 py-3 bg-black border border-[#1a1a1a] rounded-md text-white focus:outline-none focus:border-[#ef4444] transition-colors"
+                  className="w-full px-4 py-3 bg-[#030014] border border-violet-500/30 rounded-md text-white focus:outline-none focus:border-[#8b5cf6] transition-colors"
                   placeholder="your.email@example.com"
                 />
               </div>
@@ -134,14 +134,14 @@ export function ContactSection() {
                 <textarea
                   id="message"
                   rows={5}
-                  className="w-full px-4 py-3 bg-black border border-[#1a1a1a] rounded-md text-white focus:outline-none focus:border-[#ef4444] transition-colors resize-none"
+                  className="w-full px-4 py-3 bg-[#030014] border border-violet-500/30 rounded-md text-white focus:outline-none focus:border-[#8b5cf6] transition-colors resize-none"
                   placeholder="Your message..."
                 />
               </div>
 
               <button
                 type="submit"
-                className="w-full px-6 py-3 bg-[#ef4444] text-white rounded-md hover:bg-[#dc2626] transition-colors duration-200 flex items-center justify-center gap-2"
+                className="w-full px-6 py-3 bg-[#8b5cf6] text-white rounded-md hover:bg-violet-600 transition-colors duration-200 flex items-center justify-center gap-2"
               >
                 <Send className="w-4 h-4" />
                 Send Message

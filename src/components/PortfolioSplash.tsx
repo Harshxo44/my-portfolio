@@ -1,135 +1,220 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface PortfolioSplashProps {
   onFinish: () => void;
 }
 
 export default function PortfolioSplash({ onFinish }: PortfolioSplashProps) {
-  const [exit, setExit] = useState(false);
-  const [phase, setPhase] = useState<"stroke" | "red">("stroke");
+  const [progress, setProgress] = useState(0);
+  const [isFinished, setIsFinished] = useState(false);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
 
+  // Matrix Rain Effect (Numbers Only)
   useEffect(() => {
-    // Stroke animation ends
-    const redPhaseTimer = setTimeout(() => {
-      setPhase("red");
-    }, 3400); // after stroke animation
+    const canvas = canvasRef.current;
+    if (!canvas) return;
 
-    // Start fade out
-    const exitTimer = setTimeout(() => {
-      setExit(true);
-    }, 5200);
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
 
-    // Fully remove splash
-    const finishTimer = setTimeout(() => {
-      onFinish();
-    }, 6000);
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const nums = "0123456789";
+    const alphabet = nums;
+
+    const fontSize = 16;
+    const columns = canvas.width / fontSize;
+    const drops: number[] = [];
+
+    for (let x = 0; x < columns; x++) {
+      drops[x] = 1;
+    }
+
+    const draw = () => {
+      ctx.fillStyle = "rgba(4, 5, 8, 0.05)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.fillStyle = "#10b981"; // Matrix Green for numbers
+      ctx.font = fontSize + "px monospace";
+
+      for (let i = 0; i < drops.length; i++) {
+        const text = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.98) {
+          drops[i] = 0;
+        }
+        drops[i]++;
+      }
+    };
+
+    const interval = setInterval(draw, 40);
+
+    const handleResize = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    };
+
+    window.addEventListener("resize", handleResize);
 
     return () => {
-      clearTimeout(redPhaseTimer);
-      clearTimeout(exitTimer);
-      clearTimeout(finishTimer);
+      clearInterval(interval);
+      window.removeEventListener("resize", handleResize);
     };
+  }, []);
+
+  // Loading Progress Bar (Slower)
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setProgress((prev) => {
+        if (prev >= 100) {
+          clearInterval(interval);
+          setTimeout(() => setIsFinished(true), 1500); // Wait bit longer at 100%
+          setTimeout(() => onFinish(), 2500);
+          return 100;
+        }
+        // Slower increment
+        const increment = Math.random() < 0.3 ? 0 : Math.floor(Math.random() * 2) + 1;
+        return Math.min(prev + increment, 100);
+      });
+    }, 60);
+
+    return () => clearInterval(interval);
   }, [onFinish]);
 
-  const text = "Code with Aesthetic";
+  const radius = 60;
+  const circumference = 2 * Math.PI * radius;
+  const strokeDashoffset = circumference - (progress / 100) * circumference;
 
   return (
     <>
-      {/* INLINE CSS */}
       <style>{`
-        @import url("https://fonts.googleapis.com/css2?family=Russo+One&display=swap");
-
-        .splash-wrapper {
-          position: fixed;
-          inset: 0;
-          z-index: 9999;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          background: radial-gradient(600px circle at center, #1a1a1a, #0b0b0b 70%);
+        @import url('https://fonts.googleapis.com/css2?family=Nosifer&display=swap');
+        
+        @keyframes rotate-star {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
         }
-
-        svg {
-          font-family: "Russo One", sans-serif;
-          width: 520px;
+        
+        .star-spin {
+          animation: rotate-star 15s linear infinite;
         }
-
-        text {
-          font-size: 78px;
-          fill: transparent;
-          stroke: #bfbfbf;
-          stroke-width: 2;
-          animation: stroke 2.8s ease-in-out forwards;
-        }
-
-        @keyframes stroke {
-          0% {
-            stroke-dashoffset: 25%;
-            stroke-dasharray: 0 50%;
-          }
-          100% {
-            stroke-dashoffset: -25%;
-            stroke-dasharray: 50% 0;
-            fill: #f2f2f2;
-            stroke: transparent;
-          }
-        }
-
-        /* RED LETTER PHASE */
-        .red-phase tspan {
-          animation: turnRed 0.4s forwards;
-        }
-
-        .red-phase tspan:nth-child(n) {
-          animation-delay: calc(var(--i) * 0.08s);
-        }
-
-        @keyframes turnRed {
-          to {
-            fill: #ef4444;
-          }
-        }
-
-        /* EXIT */
-        .splash-exit {
-          animation: fadeOut 0.8s ease forwards;
-        }
-
-        @keyframes fadeOut {
-          to {
-            opacity: 0;
-            visibility: hidden;
-          }
-        }
-
-        @media (max-width: 600px) {
-          svg {
-            width: 360px;
-          }
-          text {
-            font-size: 56px;
-          }
+        
+        .scary-text {
+          font-family: 'Nosifer', cursive;
+          color: #ef4444;
+          text-shadow: 0 0 10px #ef4444, 0 3px 2px #7f1d1d;
         }
       `}</style>
-
-      {/* SPLASH */}
-      <div className={`splash-wrapper ${exit ? "splash-exit" : ""}`}>
-        <svg viewBox="0 0 900 120" preserveAspectRatio="xMidYMid meet">
-          <text
-            x="50%"
-            y="50%"
-            dominantBaseline="middle"
-            textAnchor="middle"
-            className={phase === "red" ? "red-phase" : ""}
+      
+      <AnimatePresence>
+        {!isFinished && (
+          <motion.div
+            initial={{ opacity: 1 }}
+            exit={{ opacity: 0, scale: 1.05, filter: "blur(5px)" }}
+            transition={{ duration: 1, ease: "easeInOut" }}
+            className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#040508] overflow-hidden"
           >
-            {text.split("").map((char, i) => (
-              <tspan key={i} style={{ "--i": i } as React.CSSProperties}>
-                {char === " " ? "\u00A0" : char}
-              </tspan>
-            ))}
-          </text>
-        </svg>
-      </div>
+            {/* Matrix Canvas */}
+            <canvas
+              ref={canvasRef}
+              className="absolute inset-0 opacity-30 pointer-events-none"
+            />
+
+            {/* Vignette Overlay */}
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,#040508_90%)] pointer-events-none" />
+
+            <div className="relative z-10 flex flex-col items-center w-full max-w-4xl px-4 mt-8">
+              {/* Top Title */}
+              <motion.h1 
+                initial={{ y: -30, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.2, duration: 1 }}
+                className="text-2xl sm:text-3xl md:text-5xl font-black tracking-wider text-[#a7f3d0] mb-2 sm:mb-4 text-center leading-tight sm:leading-normal px-2"
+                style={{
+                  textShadow: "0 0 10px #10b981, 0 0 20px #10b981, 0 0 40px #047857",
+                  fontFamily: "'Courier New', Courier, monospace"
+                }}
+              >
+                Code<br className="sm:hidden" /> with<br className="sm:hidden" /> Aesthetic
+              </motion.h1>
+
+              {/* Central Abstract Group */}
+              <motion.div 
+                initial={{ scale: 0.9, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ delay: 0.4, duration: 1.5 }}
+                className="relative w-[280px] h-[280px] sm:w-[320px] sm:h-[320px] md:w-[400px] md:h-[400px] my-4 sm:my-6 flex flex-col items-center justify-center"
+              >
+                 {/* The Rotating Star / Pentagram */}
+                 <div className="relative w-40 h-40 md:w-56 md:h-56 mb-4">
+                    <svg viewBox="0 0 100 100" className="w-full h-full text-[#10b981] drop-shadow-[0_0_15px_rgba(16,185,129,0.8)] star-spin">
+                       {/* Circle */}
+                       <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" strokeWidth="3" />
+                       {/* Pentagram Intersecting Lines */}
+                       <polygon points="50,5 95,38 78,95 22,95 5,38" fill="none" stroke="currentColor" strokeWidth="2.5" />
+                       <polygon points="50,5 78,95 5,38 95,38 22,95" fill="none" stroke="currentColor" strokeWidth="2" />
+                    </svg>
+                 </div>
+              </motion.div>
+
+              {/* Scary Loading Text & Progress */}
+              <motion.div 
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.8, duration: 1 }}
+                className="flex flex-col items-center z-20 mt-4 sm:mt-2"
+              >
+                <h2 className="text-lg sm:text-xl md:text-2xl mb-4 sm:mb-6 scary-text tracking-widest uppercase text-center">
+                  Loading...
+                </h2>
+                
+                <div className="relative flex items-center justify-center w-36 h-36">
+                  {/* Background Circle */}
+                  <svg className="absolute inset-0 w-full h-full transform -rotate-90">
+                    <circle
+                      cx="72"
+                      cy="72"
+                      r={radius}
+                      stroke="rgba(239, 68, 68, 0.15)"
+                      strokeWidth="3"
+                      fill="none"
+                    />
+                    {/* Progress Circle (Bloody Red) */}
+                    <circle
+                      cx="72"
+                      cy="72"
+                      r={radius}
+                      stroke="#ef4444"
+                      strokeWidth="5"
+                      fill="none"
+                      strokeLinecap="round"
+                      style={{
+                        strokeDasharray: circumference,
+                        strokeDashoffset: strokeDashoffset,
+                        transition: "stroke-dashoffset 0.2s ease-out",
+                      }}
+                      className="drop-shadow-[0_0_8px_rgba(239,68,68,0.8)]"
+                    />
+                  </svg>
+                  
+                  {/* Scary Percentage Text */}
+                  <div className="flex flex-col items-center justify-center -translate-y-1">
+                    <span className="text-2xl font-bold scary-text drop-shadow-[0_0_8px_rgba(239,68,68,0.8)]">
+                      {progress}%
+                    </span>
+                    <span className="text-[10px] text-[#ef4444] font-bold uppercase tracking-[0.2em] mt-3 opacity-80 mix-blend-screen">
+                      Complete
+                    </span>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 }

@@ -28,7 +28,7 @@ export function HeroSection() {
           <h2 className="text-6xl tracking-tight text-white mb-6 drop-shadow-2xl">
             Building exceptional
             <br />
-            <span className="bg-gradient-to-r from-red-500 via-pink-500 to-purple-500 text-transparent bg-clip-text">
+            <span className="bg-gradient-to-r from-violet-500 via-pink-500 to-purple-500 text-transparent bg-clip-text">
               digital experiences
             </span>
           </h2>
@@ -41,7 +41,7 @@ export function HeroSection() {
           <div className="flex items-center gap-4">
             <button
               onClick={scrollToProjects}
-              className="px-6 py-3 bg-gradient-to-r from-red-500 to-pink-600 text-white rounded-lg hover:from-red-600 hover:to-pink-700 transition-all duration-300 flex items-center gap-2 shadow-lg shadow-red-500/30 hover:shadow-red-500/50 hover:scale-105"
+              className="px-6 py-3 bg-gradient-to-r from-violet-500 to-pink-600 text-white rounded-lg hover:from-violet-600 hover:to-pink-700 transition-all duration-300 flex items-center gap-2 shadow-lg shadow-violet-500/30 hover:shadow-violet-500/50 hover:scale-105"
             >
               View Projects
               <ArrowRight className="w-4 h-4" />

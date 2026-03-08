@@ -38,7 +38,7 @@ export function SplashSectionNew() {
   return (
     <section
       id="home"
-      className="min-h-screen flex flex-col items-center justify-center relative bg-black overflow-hidden"
+      className="min-h-screen flex flex-col items-center justify-center relative bg-[#030014] overflow-hidden"
     >
       {/* Subtle grid */}
       <div className="absolute inset-0 opacity-10">
@@ -52,7 +52,7 @@ export function SplashSectionNew() {
           opacity: [0.08, 0.15, 0.08],
         }}
         transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-24 left-1/2 -translate-x-1/2 w-[420px] h-[420px] bg-red-600 rounded-full blur-3xl"
+        className="absolute top-24 left-1/2 -translate-x-1/2 w-[420px] h-[420px] bg-violet-600 rounded-full blur-3xl"
       />
 
       {/* Content */}
@@ -89,7 +89,7 @@ export function SplashSectionNew() {
           <p className="text-2xl text-gray-400 font-medium">
             {text}
             <span
-              className={`inline-block w-[2px] h-7 bg-red-500 ml-1 align-middle ${
+              className={`inline-block w-[2px] h-7 bg-violet-500 ml-1 align-middle ${
                 showCursor ? "opacity-100" : "opacity-0"
               }`}
             />
@@ -108,7 +108,7 @@ export function SplashSectionNew() {
             }}
             whileTap={{ scale: 0.95 }}
             onClick={scrollToAbout}
-            className="px-8 py-3 bg-red-600 border border-red-500 text-white rounded-full hover:bg-red-500 transition-all duration-300 shadow-lg shadow-red-500/30 font-medium"
+            className="px-8 py-3 bg-violet-600 border border-violet-500 text-white rounded-full hover:bg-violet-500 transition-all duration-300 shadow-lg shadow-violet-500/30 font-medium"
           >
             Explore Portfolio
           </motion.button>

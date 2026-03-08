@@ -83,12 +83,12 @@ export function CursorEffects() {
           >
             <div className="relative">
               {/* Bird body */}
-              <div className="w-24 h-28 bg-gradient-to-br from-amber-400 via-orange-500 to-red-500 rounded-full relative shadow-2xl">
+              <div className="w-24 h-28 bg-gradient-to-br from-amber-400 via-orange-500 to-violet-500 rounded-full relative shadow-2xl">
                 {/* Wing */}
                 <motion.div
                   animate={{ rotate: [0, -15, 0] }}
                   transition={{ duration: 0.6, repeat: Infinity, ease: 'easeInOut' }}
-                  className="absolute left-2 top-10 w-12 h-16 bg-gradient-to-br from-orange-600 to-red-600 rounded-full origin-top-right shadow-lg"
+                  className="absolute left-2 top-10 w-12 h-16 bg-gradient-to-br from-orange-600 to-violet-600 rounded-full origin-top-right shadow-lg"
                   style={{ transform: 'rotate(30deg)' }}
                 />
 
@@ -109,7 +109,7 @@ export function CursorEffects() {
                         y: Math.sin(angle) * 2,
                       }}
                       transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-                      className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-black rounded-full"
+                      className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-[#030014] rounded-full"
                     />
                   </div>
 
@@ -124,8 +124,8 @@ export function CursorEffects() {
 
                 {/* Tail feathers */}
                 <div className="absolute right-0 top-1/2 translate-x-3 -translate-y-1/2">
-                  <div className="w-10 h-3 bg-gradient-to-r from-red-600 to-red-700 rounded-full" />
-                  <div className="w-10 h-3 bg-gradient-to-r from-orange-600 to-red-600 rounded-full mt-1" />
+                  <div className="w-10 h-3 bg-gradient-to-r from-violet-600 to-violet-700 rounded-full" />
+                  <div className="w-10 h-3 bg-gradient-to-r from-orange-600 to-violet-600 rounded-full mt-1" />
                   <div className="w-10 h-3 bg-gradient-to-r from-yellow-500 to-orange-600 rounded-full mt-1" />
                 </div>
 
@@ -186,11 +186,11 @@ export function CursorEffects() {
                   {/* Head */}
                   <div className="absolute top-0 left-1/2 -translate-x-1/2 w-5 h-5 bg-gradient-to-br from-yellow-600 to-amber-700 rounded-full shadow-lg">
                     {/* Eyes */}
-                    <div className="absolute top-1 left-0.5 w-1.5 h-1.5 bg-black rounded-full" />
-                    <div className="absolute top-1 right-0.5 w-1.5 h-1.5 bg-black rounded-full" />
+                    <div className="absolute top-1 left-0.5 w-1.5 h-1.5 bg-[#030014] rounded-full" />
+                    <div className="absolute top-1 right-0.5 w-1.5 h-1.5 bg-[#030014] rounded-full" />
                     {/* Antennae */}
-                    <div className="absolute -top-1 left-1 w-0.5 h-2 bg-black rounded-full" style={{ transform: 'rotate(-20deg)' }} />
-                    <div className="absolute -top-1 right-1 w-0.5 h-2 bg-black rounded-full" style={{ transform: 'rotate(20deg)' }} />
+                    <div className="absolute -top-1 left-1 w-0.5 h-2 bg-[#030014] rounded-full" style={{ transform: 'rotate(-20deg)' }} />
+                    <div className="absolute -top-1 right-1 w-0.5 h-2 bg-[#030014] rounded-full" style={{ transform: 'rotate(20deg)' }} />
                   </div>
 
                   {/* Main body with stripes */}
@@ -257,9 +257,9 @@ export function CursorEffects() {
                   />
 
                   {/* Legs */}
-                  <div className="absolute bottom-2 left-2 w-0.5 h-3 bg-black rounded-full" style={{ transform: 'rotate(-30deg)' }} />
-                  <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-0.5 h-3 bg-black rounded-full" />
-                  <div className="absolute bottom-2 right-2 w-0.5 h-3 bg-black rounded-full" style={{ transform: 'rotate(30deg)' }} />
+                  <div className="absolute bottom-2 left-2 w-0.5 h-3 bg-[#030014] rounded-full" style={{ transform: 'rotate(-30deg)' }} />
+                  <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-0.5 h-3 bg-[#030014] rounded-full" />
+                  <div className="absolute bottom-2 right-2 w-0.5 h-3 bg-[#030014] rounded-full" style={{ transform: 'rotate(30deg)' }} />
                 </div>
               </div>
             </motion.div>
