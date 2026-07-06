@@ -38,11 +38,11 @@ export function ResumeSection() {
                 {/* Highlights */}
                 <div className="space-y-3 mb-8">
                   {[
-                    "Computer Engineering Student",
-                    "UI/UX & Frontend Developer",
-                    "IBM Professional Java Certified",
-                    "AWS & NVIDIA Learning Program",
-                    "Hackathon Participant",
+                    "Computer Science Engineering Student",
+                    "AI/ML Intern at CodSoft",
+                    "AWS Certified Cloud Practitioner",
+                    "IBM Java Developer & AI Engineering Certified",
+                    "Google Advanced Data Analytics Certified",
                   ].map((item) => (
                     <div key={item} className="flex items-center gap-3">
                       <span className="text-red-500">✓</span>

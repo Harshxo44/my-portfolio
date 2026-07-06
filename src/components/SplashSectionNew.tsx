@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 export function SplashSectionNew() {
   const [text, setText] = useState("");
   const [showCursor, setShowCursor] = useState(true);
-  const fullText = "UI/UX & Frontend Developer";
+  const fullText = "Full-Stack & AI/ML Developer";
 
   useEffect(() => {
     let index = 0;
@@ -97,7 +97,7 @@ export function SplashSectionNew() {
         </div>
 
         <p className="text-xl text-gray-500 max-w-2xl mx-auto">
-          UI/UX Focused Frontend Developer • Problem Solver • Tech Enthusiast
+          AI/ML & Full-Stack Developer • Problem Solver • Tech Enthusiast
         </p>
 
         <div className="pt-8">

@@ -93,19 +93,33 @@ export default function PortfolioSplash({ onFinish }: PortfolioSplashProps) {
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Nosifer&display=swap');
         
-        @keyframes rotate-star {
+        @keyframes rotate-clockwise {
           from { transform: rotate(0deg); }
           to { transform: rotate(360deg); }
         }
         
-        .star-spin {
-          animation: rotate-star 15s linear infinite;
+        @keyframes pulse-glow {
+          0%, 100% { filter: drop-shadow(0 0 12px rgba(16,185,129,0.6)) scale(1); }
+          50% { filter: drop-shadow(0 0 25px rgba(16,185,129,0.9)) scale(1.03); }
+        }
+
+        .circle-spin {
+          animation: rotate-clockwise 25s linear infinite;
+          transform-origin: center;
+        }
+        
+        .star-pulse {
+          animation: pulse-glow 3s ease-in-out infinite;
+          transform-origin: center;
         }
         
         .scary-text {
           font-family: 'Nosifer', cursive;
           color: #ef4444;
           text-shadow: 0 0 10px #ef4444, 0 3px 2px #7f1d1d;
+          line-height: 1.6;
+          padding-bottom: 12px;
+          display: inline-block;
         }
       `}</style>
       
@@ -148,16 +162,49 @@ export default function PortfolioSplash({ onFinish }: PortfolioSplashProps) {
                 transition={{ delay: 0.4, duration: 1.5 }}
                 className="relative w-[280px] h-[280px] sm:w-[320px] sm:h-[320px] md:w-[400px] md:h-[400px] my-4 sm:my-6 flex flex-col items-center justify-center"
               >
-                 {/* The Rotating Star / Pentagram */}
-                 <div className="relative w-40 h-40 md:w-56 md:h-56 mb-4">
-                    <svg viewBox="0 0 100 100" className="w-full h-full text-[#10b981] drop-shadow-[0_0_15px_rgba(16,185,129,0.8)] star-spin">
-                       {/* Circle */}
-                       <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" strokeWidth="3" />
-                       {/* Pentagram Intersecting Lines */}
-                       <polygon points="50,5 95,38 78,95 22,95 5,38" fill="none" stroke="currentColor" strokeWidth="2.5" />
-                       <polygon points="50,5 78,95 5,38 95,38 22,95" fill="none" stroke="currentColor" strokeWidth="2" />
-                    </svg>
-                 </div>
+                  {/* The Rotating Star / Pentagram */}
+                  <div className="relative w-40 h-40 md:w-56 md:h-56 mb-4 flex items-center justify-center">
+                     {/* Outer Ring - Rotating Clockwise with Dashes */}
+                     <svg viewBox="0 0 100 100" className="absolute w-full h-full text-[#10b981]/40 circle-spin">
+                        <circle 
+                           cx="50" 
+                           cy="50" 
+                           r="45" 
+                           fill="none" 
+                           stroke="currentColor" 
+                           strokeWidth="2.5" 
+                           strokeDasharray="6 4"
+                        />
+                     </svg>
+                     
+                     {/* Inner Pentagram and Pentagon - Pulsing and Drawing dynamically */}
+                     <svg viewBox="0 0 100 100" className="absolute w-full h-full text-[#10b981] star-pulse">
+                        {/* Outer Pentagon - Geometrically Accurate & Self-Drawing */}
+                        <polygon 
+                           points="50,5 92.8,36.1 76.5,86.4 23.5,86.4 7.2,36.1" 
+                           fill="none" 
+                           stroke="currentColor" 
+                           strokeWidth="2" 
+                           style={{
+                              strokeDasharray: "265",
+                              strokeDashoffset: 265 - (progress / 100) * 265,
+                              transition: "stroke-dashoffset 0.15s ease-out"
+                           }}
+                        />
+                        {/* Pentagram Intersecting Lines - Geometrically Accurate & Self-Drawing */}
+                        <polygon 
+                           points="50,5 76.5,86.4 7.2,36.1 92.8,36.1 23.5,86.4" 
+                           fill="none" 
+                           stroke="currentColor" 
+                           strokeWidth="2.5" 
+                           style={{
+                              strokeDasharray: "428",
+                              strokeDashoffset: 428 - (progress / 100) * 428,
+                              transition: "stroke-dashoffset 0.15s ease-out"
+                           }}
+                        />
+                     </svg>
+                  </div>
               </motion.div>
 
               {/* Scary Loading Text & Progress */}
@@ -205,7 +252,7 @@ export default function PortfolioSplash({ onFinish }: PortfolioSplashProps) {
                     <span className="text-2xl font-bold scary-text drop-shadow-[0_0_8px_rgba(239,68,68,0.8)]">
                       {progress}%
                     </span>
-                    <span className="text-[10px] text-[#ef4444] font-bold uppercase tracking-[0.2em] mt-3 opacity-80 mix-blend-screen">
+                    <span className="text-[10px] text-[#ef4444] font-bold uppercase tracking-[0.2em] mt-1 opacity-80 mix-blend-screen">
                       Complete
                     </span>
                   </div>

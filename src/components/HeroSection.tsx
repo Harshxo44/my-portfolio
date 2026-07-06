@@ -33,9 +33,9 @@ export function HeroSection() {
             </span>
           </h2>
           <p className="text-xl text-gray-300 mb-8 max-w-2xl leading-relaxed drop-shadow-lg">
-            I'm a frontend developer passionate about creating beautiful,
+            I'm a Full-Stack & AI/ML developer passionate about creating intelligent,
             performant, and accessible web applications. With expertise in
-            React, TypeScript, and modern web technologies, I turn ideas into
+            React, Node.js, and modern AI/ML pipelines, I turn ideas into
             reality.
           </p>
           <div className="flex items-center gap-4">
@@ -46,10 +46,14 @@ export function HeroSection() {
               View Projects
               <ArrowRight className="w-4 h-4" />
             </button>
-            <button className="px-6 py-3 bg-gradient-to-r from-emerald-500/20 to-blue-500/20 backdrop-blur-sm border border-emerald-400/50 text-emerald-300 rounded-lg hover:bg-emerald-500/30 transition-all duration-300 flex items-center gap-2 shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/40 hover:scale-105">
+            <a 
+              href="/resume/harshresume.pdf"
+              download
+              className="px-6 py-3 bg-gradient-to-r from-emerald-500/20 to-blue-500/20 backdrop-blur-sm border border-emerald-400/50 text-emerald-300 rounded-lg hover:bg-emerald-500/30 transition-all duration-300 flex items-center gap-2 shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/40 hover:scale-105"
+            >
               <Download className="w-4 h-4" />
               Download Resume
-            </button>
+            </a>
           </div>
         </div>
       </div>

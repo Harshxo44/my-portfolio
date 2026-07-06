@@ -48,24 +48,22 @@ export function AboutSection() {
                 {/* Text inside card */}
                 <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
                   <h3 className="text-2xl font-bold text-white mb-1">Harsh Sharma</h3>
-                  <p className="text-violet-400 font-medium tracking-wide text-sm">Frontend Developer</p>
+                  <p className="text-violet-400 font-medium tracking-wide text-sm">Full-Stack & AI/ML Developer</p>
                 </div>
               </div>
             </div>
 
             <div className="space-y-4">
               <p className="text-gray-300 leading-relaxed text-lg">
-                I am a student UI/UX and frontend developer with a strong passion
-                for building clean, intuitive, and visually engaging user
-                interfaces. I enjoy transforming ideas into interactive digital
-                experiences using modern web technologies.
+                I am a Computer Science Engineering student at Parul University with hands-on
+                experience building AI-powered systems, scalable APIs, and full-stack web applications.
+                I enjoy transforming complex ideas into efficient and interactive digital experiences.
               </p>
 
               <p className="text-gray-400 leading-relaxed">
-                My journey into development started at a young age, driven by my
-                curiosity about games and how digital systems work behind the
-                scenes. That curiosity gradually shaped my decision to pursue
-                computer engineering and build a career in software development.
+                My journey into development is driven by a deep curiosity for how digital systems work
+                and how intelligent pipelines can solve real-world problems. I focus on backend engineering,
+                AI/ML integration, and building secure, production-grade applications.
               </p>
             </div>
           </div>
@@ -81,25 +79,25 @@ export function AboutSection() {
                 <li className="flex items-start gap-3">
                   <span className="text-green-500 mt-1 text-xl">✓</span>
                   <span className="text-gray-300">
-                    Student UI/UX & Frontend Developer
+                    B.Tech, Computer Science and Engineering Student
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-green-500 mt-1 text-xl">✓</span>
                   <span className="text-gray-300">
-                    Strong focus on React, JavaScript, and modern UI design
+                    AWS Certified Cloud Practitioner
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-green-500 mt-1 text-xl">✓</span>
                   <span className="text-gray-300">
-                    Actively learning and building real-world projects
+                    IBM Java Developer & AI Engineering Certified
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-green-500 mt-1 text-xl">✓</span>
                   <span className="text-gray-300">
-                    Long-term goal: Professional Software Developer
+                    Hands-on experience in Full-Stack & AI/ML integration
                   </span>
                 </li>
               </ul>
@@ -112,12 +110,12 @@ export function AboutSection() {
               </h3>
               <div className="flex flex-wrap gap-2">
                 {[
+                  "Backend Engineering",
+                  "AI Systems & Automation",
+                  "Full-Stack Development",
+                  "Competitive Programming",
+                  "Open Source Contribution",
                   "Learning New Technologies",
-                  "UI / UX Design",
-                  "Frontend Development",
-                  "Problem Solving",
-                  "Gaming",
-                  "Photography",
                 ].map((interest) => (
                   <span
                     key={interest}

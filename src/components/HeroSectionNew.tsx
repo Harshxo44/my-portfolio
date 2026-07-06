@@ -27,7 +27,7 @@ export function HeroSectionNew() {
             className="inline-block mb-4"
           >
             <span className="px-4 py-2 bg-violet-500/10 backdrop-blur-md border border-violet-500/30 rounded-full text-sm text-violet-400 font-medium">
-              🎓 Student • UI/UX & Frontend Developer
+              🎓 Student • Full-Stack & AI/ML Developer
             </span>
           </motion.div>
 
@@ -68,10 +68,9 @@ export function HeroSectionNew() {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="text-xl text-gray-400 mb-8 max-w-2xl leading-relaxed"
           >
-            I’m a student UI/UX and frontend developer focused on creating
-            clean, user-centered interfaces and interactive web experiences.
-            Currently building projects with React and modern web technologies,
-            with a long-term goal of becoming a professional software developer.
+            I’m a Computer Science Engineering student focused on building AI-powered systems,
+            backend services, and full-stack web applications. Currently integrating intelligent
+            pipelines and designing clean, scalable digital experiences.
           </motion.p>
 
           {/* Actions */}
@@ -96,17 +95,19 @@ export function HeroSectionNew() {
             </motion.button>
 
             {/* Secondary */}
-            <motion.button
+            <motion.a
+              href="/resume/harshresume.pdf"
+              download
               whileHover={{
                 scale: 1.05,
-                borderColor: "rgba(239,68,68,0.6)",
+                borderColor: "rgba(139, 92, 246, 0.6)",
               }}
               whileTap={{ scale: 0.95 }}
-              className="px-6 py-3 border border-white/20 text-gray-300 rounded-full transition-all duration-300 flex items-center gap-2 font-medium hover:text-white hover:border-violet-500/40"
+              className="px-6 py-3 border border-white/20 text-gray-300 rounded-full transition-all duration-300 flex items-center gap-2 font-medium hover:text-white hover:border-violet-500/40 cursor-pointer"
             >
               <Download className="w-4 h-4" />
               Download Resume
-            </motion.button>
+            </motion.a>
           </motion.div>
         </div>
       </div>

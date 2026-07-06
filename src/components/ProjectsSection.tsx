@@ -3,42 +3,35 @@ import { ExternalLink, Github } from "lucide-react";
 export function ProjectsSection() {
   const projects = [
     {
-      title: "Swaas – Health Prediction App",
+      title: "AI/ML Intern — CodSoft",
       description:
-        "A mobile application focused on health awareness and prediction. Built using Dart and Kotlin, designed to explore mobile development and real-world problem solving.",
-      techStack: ["Dart", "Kotlin"],
+        "Developed machine learning solutions, worked on Python-based ML projects, and applied classification/regression algorithms to practical datasets during the internship.",
+      techStack: ["Python", "Machine Learning", "Data Analysis"],
       live: "",
-      github: "https://github.com/Harshxo44/Swaas_FullApp",
+      github: "https://github.com/Harshxo44",
     },
     {
-      title: "PingMeNot – Anonymous Chat App",
+      title: "DubAI Studio — AI Video Dubbing Platform",
       description:
-        "A web-based anonymous chat application that allows users to communicate without revealing identity. Focused on frontend logic, UI flow, and real-time interaction concepts.",
-      techStack: ["React", "JavaScript"],
+        "Architected an end-to-end AI-powered multilingual video dubbing pipeline supporting 10+ languages with automated transcription, translation, and voice cloning. Integrated Faster Whisper, XTTS-v2, OpenVoice V2, and Demucs.",
+      techStack: [
+        "Node.js",
+        "Express.js",
+        "Python",
+        "FFmpeg",
+        "XTTS-v2",
+        "Whisper",
+        "OpenVoice V2",
+        "Demucs",
+      ],
       live: "",
-      github: "https://github.com/Harshxo44/pingmenot-main",
+      github: "https://github.com/Harshxo44",
     },
     {
-      title: "E-Purse — Expense & Budget Tracker",
+      title: "DriveLedger — Fleet Profit Management System",
       description:
-        "A finance dashboard web application built with React that allows users to track expenses, manage budgets, and analyze spending patterns through a clean and responsive interface.",
-      techStack: ["React", "JavaScript", "CSS", "TypeScript"],
-      live: "",
-      github: "https://github.com/Harshxo44/E-Purse",
-    },
-    {
-      title: "SyncBoard",
-      description:
-        "A real-time collaborative Kanban-style task management board where multiple users can create, organize, and move tasks with instant synchronization and drag-and-drop functionality.",
-      techStack: ["Next.js", "React", "Tailwind CSS", "Supabase", "PostgreSQL"],
-      live: "",
-      github: "https://github.com/Harshxo44/syncboard",
-    },
-    {
-      title: "Mini Game Project",
-      description:
-        "A small interactive game built for learning core programming concepts, logic building, and user interaction.",
-      techStack: ["JavaScript"],
+        "Developed a cross-platform financial management application featuring role-based workflow architecture. Integrated real-time data synchronization using Firebase Cloud Firestore and designed interactive analytics dashboards.",
+      techStack: ["Flutter", "Firebase", "Cloud Firestore", "Dart", "FL Chart"],
       live: "",
       github: "https://github.com/Harshxo44",
     },

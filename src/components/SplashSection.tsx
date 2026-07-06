@@ -4,7 +4,7 @@ import { ChevronDown } from "lucide-react";
 export function SplashSection() {
   const [text, setText] = useState("");
   const [showCursor, setShowCursor] = useState(true);
-  const fullText = "UI/UX & Frontend Developer";
+  const fullText = "Full-Stack & AI/ML Developer";
 
   useEffect(() => {
     let index = 0;
@@ -67,8 +67,8 @@ export function SplashSection() {
 
         {/* Tagline */}
         <p className="text-lg text-gray-500 max-w-xl mx-auto leading-relaxed">
-          Passionate about building clean interfaces, intuitive user
-          experiences, and meaningful digital products.
+          Passionate about building AI-powered systems, scalable APIs, 
+          and full-stack digital experiences.
         </p>
 
         {/* CTA */}
