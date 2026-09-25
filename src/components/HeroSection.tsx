@@ -1,62 +1,116 @@
-import { Download, ArrowRight } from "lucide-react";
+import { useState, useCallback } from "react";
+import { motion, useReducedMotion } from "framer-motion";
+import { ArrowDown, ArrowUpRight } from "lucide-react";
+import { PROFILE } from "@/data/profile";
+import { HeroDoodles } from "./doodles/HeroDoodles";
+import { HeroInterfaceVisual } from "./HeroInterfaceVisual";
 
 export function HeroSection() {
-  const scrollToProjects = () => {
-    const element = document.getElementById("projects");
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
+  const reduceMotion = useReducedMotion();
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+
+  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLElement>) => {
+    if (reduceMotion) return;
+    const { clientX, clientY } = e;
+    const { innerWidth, innerHeight } = window;
+    // Normalize coordinates to range [-1, 1]
+    const normX = (clientX / innerWidth) * 2 - 1;
+    const normY = (clientY / innerHeight) * 2 - 1;
+    setMousePos({ x: normX, y: normY });
+  }, [reduceMotion]);
+
+  const scrollToSection = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth" });
   };
 
   return (
-    <section className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#0a0a0a] via-[#1a0a2e] to-[#0f172a] border-t border-[#1a1a1a] relative overflow-hidden">
-      {/* Gradient overlays for depth */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none z-[5]" />
-      <div className="absolute inset-0 bg-gradient-to-b from-purple-900/10 via-transparent to-blue-900/10 pointer-events-none z-[5]" />
+    <section
+      id="home"
+      className="editorial-hero notebook-theme"
+      onMouseMove={handleMouseMove}
+    >
+      <div className="hero-noise" aria-hidden="true" />
+      <div className="paper-backdrop paper-backdrop-left" aria-hidden="true" />
+      <div className="paper-backdrop paper-backdrop-right" aria-hidden="true" />
 
-      {/* 3D Background */}
-      <div className="absolute inset-0 opacity-70"></div>
+      {/* Notebook margin & grid lines */}
+      <div className="notebook-lines-overlay" aria-hidden="true" />
 
-      {/* Content */}
-      <div className="max-w-[1440px] w-full px-8 py-20 relative z-10">
-        <div className="max-w-4xl">
-          <div className="inline-block mb-4">
-            <span className="px-4 py-2 bg-gradient-to-r from-emerald-500/20 to-blue-500/20 backdrop-blur-md border border-emerald-400/30 rounded-full text-sm text-emerald-300 shadow-lg shadow-emerald-500/20">
-              ✨ Available for work
-            </span>
-          </div>
-          <h2 className="text-6xl tracking-tight text-white mb-6 drop-shadow-2xl">
-            Building exceptional
-            <br />
-            <span className="bg-gradient-to-r from-violet-500 via-pink-500 to-purple-500 text-transparent bg-clip-text">
-              digital experiences
-            </span>
-          </h2>
-          <p className="text-xl text-gray-300 mb-8 max-w-2xl leading-relaxed drop-shadow-lg">
-            I'm a Full-Stack & AI/ML developer passionate about creating intelligent,
-            performant, and accessible web applications. With expertise in
-            React, Node.js, and modern AI/ML pipelines, I turn ideas into
-            reality.
+      <div className="hero-copy">
+        <span className="editorial-index">00 / PERSONAL SYSTEM</span>
+
+        <motion.div
+          className="hero-note"
+          initial={reduceMotion ? false : { opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          <span className="hero-note-pin" />
+          <span className="hero-kicker">COMPUTER SCIENCE ENGINEERING STUDENT</span>
+          <span className="hero-note-line">personal workbench &amp; system log</span>
+        </motion.div>
+
+        {/* Editorial Headline */}
+        <motion.h1
+          className="hero-headline"
+          initial={reduceMotion ? false : { opacity: 0, y: 35 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: reduceMotion ? 0 : 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <span className="headline-heavy">ideas</span>
+          <br />
+          <span className="headline-heavy">into</span>
+          <br />
+          <span className="headline-heavy">useful</span>
+          <br />
+          <span className="headline-serif">systems.</span>
+        </motion.h1>
+
+        {/* Personal Intro Copy */}
+        <motion.div
+          className="hero-description-block"
+          initial={reduceMotion ? false : { opacity: 0, y: 25 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: reduceMotion ? 0 : 0.7, delay: 0.25 }}
+        >
+          <p className="hero-description">
+            {PROFILE.bioIntro}
           </p>
-          <div className="flex items-center gap-4">
-            <button
-              onClick={scrollToProjects}
-              className="px-6 py-3 bg-gradient-to-r from-violet-500 to-pink-600 text-white rounded-lg hover:from-violet-600 hover:to-pink-700 transition-all duration-300 flex items-center gap-2 shadow-lg shadow-violet-500/30 hover:shadow-violet-500/50 hover:scale-105"
-            >
-              View Projects
-              <ArrowRight className="w-4 h-4" />
-            </button>
-            <a 
-              href="/resume/harshresume.pdf"
-              download
-              className="px-6 py-3 bg-gradient-to-r from-emerald-500/20 to-blue-500/20 backdrop-blur-sm border border-emerald-400/50 text-emerald-300 rounded-lg hover:bg-emerald-500/30 transition-all duration-300 flex items-center gap-2 shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/40 hover:scale-105"
-            >
-              <Download className="w-4 h-4" />
-              Download Resume
-            </a>
-          </div>
+          <p className="hero-philosophy">
+            {PROFILE.personalPhilosophy}
+          </p>
+        </motion.div>
+
+        {/* Handwritten line */}
+        <p className="handwritten-line">{PROFILE.handwrittenLine}</p>
+
+        {/* CTA Actions */}
+        <div className="hero-actions">
+          <button
+            className="editorial-button editorial-button-dark"
+            onClick={() => scrollToSection("about")}
+          >
+            MEET HARSH <ArrowDown size={16} />
+          </button>
+          <a
+            className="editorial-text-button"
+            href={`mailto:${PROFILE.email}`}
+          >
+            LET&apos;S TALK <ArrowUpRight size={16} />
+          </a>
+          <button
+            className="editorial-text-button"
+            onClick={() => scrollToSection("projects")}
+          >
+            VIEW WORK →
+          </button>
         </div>
       </div>
+
+      <HeroInterfaceVisual />
+
+      {/* Interactive Hand-Drawn Doodles with Cursor Parallax */}
+      <HeroDoodles mouseX={mousePos.x} mouseY={mousePos.y} />
     </section>
   );
 }

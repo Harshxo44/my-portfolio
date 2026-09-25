@@ -1,162 +1,116 @@
-import { Code2, Database, Wrench, Layers } from "lucide-react";
-import { motion, Variants } from "framer-motion";
+import { Code2, Database, Wrench, Layers, Cpu } from "lucide-react";
+import { motion } from "framer-motion";
 
 export function SkillsSection() {
   const skillCategories = [
     {
-      title: "AI / ML",
-      icon: Code2,
+      title: "AI / Machine Learning",
+      icon: Cpu,
       skills: [
-        "Machine Learning",
-        "Large Language Models (LLMs)",
-        "TensorFlow",
-        "PyTorch",
-        "Keras",
-        "RAG",
-        "Vector Databases",
-        "PySpark",
-        "Deep Learning",
+        { name: "XTTS-v2 & OpenVoice V2", detail: "DubAI Studio voice cloning" },
+        { name: "Faster Whisper ASR", detail: "Multilingual transcription" },
+        { name: "Demucs v4", detail: "Vocal stem separation" },
+        { name: "TensorFlow & Keras", detail: "Transfer learning waste sorting" },
+        { name: "PyTorch & OpenCV", detail: "Deep vision & audio features" },
+        { name: "Pandas & Scikit-Learn", detail: "NYC TLC Taxi analytics" },
       ],
     },
     {
-      title: "Backend & Languages",
+      title: "Backend & Systems",
       icon: Layers,
       skills: [
-        "C++",
-        "JavaScript (ES6+)",
-        "Python",
-        "Dart",
-        "Node.js",
-        "Express.js",
-        "REST APIs",
-        "Spring Boot",
-        "Microservices",
+        { name: "Node.js & Express.js", detail: "DubAI & Swaas REST APIs" },
+        { name: "Java & Spring Boot", detail: "Velora automotive backend" },
+        { name: "Python 3.10+", detail: "AI audio & data pipelines" },
+        { name: "REST API Architecture", detail: "Microservice routing & auth" },
+        { name: "C++", detail: "Core CS Data Structures" },
       ],
     },
     {
-      title: "Frontend",
+      title: "Frontend Engineering",
       icon: Code2,
-      skills: ["React.js", "HTML5", "CSS3", "Tailwind CSS", "Flutter"],
+      skills: [
+        { name: "React 18", detail: "Interactive web applications" },
+        { name: "TypeScript", detail: "Typed application interfaces" },
+        { name: "Tailwind CSS", detail: "Custom responsive styling" },
+        { name: "Flutter & Dart", detail: "DriveLedger mobile fleet app" },
+      ],
     },
     {
-      title: "Databases",
+      title: "Databases & Cloud",
       icon: Database,
-      skills: ["MongoDB", "MySQL", "Firebase Firestore"],
+      skills: [
+        { name: "AWS Cloud", detail: "Certified Cloud Practitioner" },
+        { name: "Firebase Firestore", detail: "DriveLedger & Swaas backend" },
+        { name: "MongoDB", detail: "NoSQL document collections" },
+        { name: "MySQL / H2", detail: "Relational persistence" },
+      ],
     },
     {
-      title: "Cloud & Tools",
+      title: "Tools & Infrastructure",
       icon: Wrench,
       skills: [
-        "AWS (Certified)",
-        "Firebase",
-        "Git",
-        "GitHub",
-        "Postman",
-        "Google Colab",
-        "Docker",
-        "Azure AI",
-        "IBM Cloud",
+        { name: "FFmpeg", detail: "Media processing & audio sync" },
+        { name: "Git & GitHub", detail: "Certified version control" },
+        { name: "Google Colab GPU", detail: "Cloud T4 acceleration" },
+        { name: "Postman & Docker", detail: "API testing & containerization" },
       ],
     },
   ];
 
-  const containerVariants: Variants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.2,
-      },
-    },
-  };
-
-  const itemVariants: Variants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      transition: { type: "spring", stiffness: 300, damping: 24 }
-    },
-  };
-
-  const headerVariants: Variants = {
-    hidden: { opacity: 0, scale: 0.9 },
-    visible: { opacity: 1, scale: 1, transition: { duration: 0.5, ease: "easeOut" } },
-  };
-
   return (
     <section
       id="skills"
-      className="min-h-screen flex items-center justify-center bg-[#030014]/50 border-t border-violet-500/20"
+      className="py-24 bg-[#030014]/60 border-t border-violet-500/20 text-gray-200"
     >
-      <div className="max-w-[1440px] w-full px-8 py-20 overflow-hidden">
+      <div className="max-w-[1440px] mx-auto px-6 sm:px-8">
         {/* Header */}
-        <motion.div 
-          className="mb-12"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={headerVariants}
-        >
-          <span className="text-violet-500 text-sm tracking-wider uppercase font-semibold">
+        <div className="mb-12">
+          <span className="text-violet-400 text-xs sm:text-sm tracking-wider uppercase font-semibold">
             Skills & Expertise
           </span>
-          <h2 className="text-5xl text-white mt-2 font-bold">
-            {"Tech Stack".split("").map((char, index) => (
-              <span
-                key={index}
-                className="inline-block hover:scale-110 hover:-translate-y-1 hover:text-violet-500 transition-all duration-200 cursor-default"
-              >
-                {char === " " ? "\u00A0" : char}
-              </span>
-            ))}
+          <h2 className="text-4xl sm:text-5xl text-white mt-2 font-bold tracking-tight">
+            Tech Stack
           </h2>
-        </motion.div>
+        </div>
 
-        {/* Column Layout */}
-        <motion.div 
-          className="flex flex-col space-y-4 max-w-4xl mx-auto"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-        >
+        {/* Categories Grid */}
+        <div className="space-y-6 max-w-5xl mx-auto">
           {skillCategories.map((category) => {
             const Icon = category.icon;
             return (
-              <motion.div
+              <div
                 key={category.title}
-                variants={itemVariants}
-                className="bg-[#0a002a]/60 backdrop-blur-xl border border-violet-500/30 hover:border-violet-500/50 rounded-2xl p-4 transition-all duration-300 hover:scale-[1.02] hover:-translate-y-1 shadow-lg shadow-violet-500/10 hover:shadow-xl flex flex-col md:flex-row md:items-center gap-4"
+                className="bg-[#0a002a]/60 backdrop-blur-xl border border-violet-500/30 hover:border-violet-500/60 rounded-2xl p-5 sm:p-6 transition-all duration-300 shadow-xl shadow-violet-500/5 hover:shadow-violet-500/15"
               >
-                {/* Row header */}
-                <div className="flex items-center gap-3 shrink-0 md:w-64">
-                  <div className="p-2.5 rounded-xl bg-[#030014]/50 shadow-md group-hover:bg-violet-500/10 transition-colors">
-                    <Icon className="w-5 h-5 text-violet-500" />
+                <div className="flex items-center gap-3 mb-4 pb-3 border-b border-violet-500/20">
+                  <div className="p-2.5 rounded-xl bg-[#030014]/60 border border-violet-500/30">
+                    <Icon className="w-5 h-5 text-violet-400" />
                   </div>
-                  <h3 className="text-lg text-white font-medium">
+                  <h3 className="text-lg font-bold text-white">
                     {category.title}
                   </h3>
                 </div>
 
-                {/* Skills content area (horizontal wrap) */}
-                <div className="flex flex-wrap gap-2 flex-grow">
-                  {category.skills.map((skill, index) => (
-                    <motion.div
-                      whileHover={{ scale: 1.05 }}
-                      transition={{ type: "tween", duration: 0.2 }}
-                      key={index}
-                      className="flex items-center text-gray-300 bg-[#030014]/40 px-3 py-1.5 rounded-full border border-violet-500/20 hover:border-violet-500/40 hover:bg-violet-500/10 transition-colors text-sm"
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                  {category.skills.map((skill) => (
+                    <div
+                      key={skill.name}
+                      className="p-3 bg-[#030014]/60 border border-violet-500/20 hover:border-violet-500/50 rounded-xl transition-all hover:bg-violet-500/10 group"
                     >
-                      <span>{skill as string}</span>
-                    </motion.div>
+                      <div className="text-sm font-semibold text-white group-hover:text-violet-300 transition-colors">
+                        {skill.name}
+                      </div>
+                      <div className="text-xs text-gray-400 mt-0.5 font-sans">
+                        → {skill.detail}
+                      </div>
+                    </div>
                   ))}
                 </div>
-              </motion.div>
+              </div>
             );
           })}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

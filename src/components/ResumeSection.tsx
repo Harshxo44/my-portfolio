@@ -1,81 +1,110 @@
-import { Download, FileText, Eye } from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
+import { PROFILE, CERTIFICATIONS } from "@/data/profile";
+import { Download, Eye, FileText, Award, CheckCircle2 } from "lucide-react";
 
 export function ResumeSection() {
+  const reduceMotion = useReducedMotion();
+
   return (
-    <section
-      id="resume"
-      className="min-h-screen flex items-center justify-center bg-[#0a0a0f] border-t border-red-500/20"
-    >
-      <div className="max-w-[1440px] w-full px-8 py-20">
-        {/* Header */}
-        <div className="mb-12">
-          <span className="text-red-500 text-sm tracking-wider uppercase font-semibold">
-            Resume
-          </span>
-          <h2 className="text-5xl text-white mt-2 font-bold">
-            Resume & Certifications
-          </h2>
+    <section id="resume" className="editorial-section resume-section">
+      <motion.div
+        initial={reduceMotion ? false : { opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.15 }}
+        transition={{ duration: 0.6 }}
+      >
+        <span className="editorial-index">06 / RESUME &amp; QUALIFICATIONS</span>
+        <div className="section-heading">
+          <h2>Resume &amp; <em>Certifications.</em></h2>
+          <p>
+            Official academic credentials, verified certifications, and software engineering capabilities.
+          </p>
+        </div>
+      </motion.div>
+
+      <div className="resume-grid">
+        {/* Main Resume Overview Card */}
+        <div className="resume-main-card">
+          <div className="resume-card-header">
+            <div className="resume-icon-wrapper">
+              <FileText size={28} />
+            </div>
+            <div>
+              <h3>HARSH SHARMA</h3>
+              <p className="resume-subtitle">Computer Science Engineering Student</p>
+            </div>
+          </div>
+
+          <p className="resume-bio">
+            Official engineering resume detailing Computer Science coursework at Parul University, AI/ML pipeline implementations, backend systems development, and cloud credentials.
+          </p>
+
+          <div className="resume-bullets">
+            <div className="bullet-item">
+              <CheckCircle2 size={16} className="bullet-icon" />
+              <span>B.Tech Computer Science &amp; Engineering @ Parul University</span>
+            </div>
+            <div className="bullet-item">
+              <CheckCircle2 size={16} className="bullet-icon" />
+              <span>AWS Certified Cloud Practitioner</span>
+            </div>
+            <div className="bullet-item">
+              <CheckCircle2 size={16} className="bullet-icon" />
+              <span>IBM Java Developer &amp; Deep Learning Credentials</span>
+            </div>
+            <div className="bullet-item">
+              <CheckCircle2 size={16} className="bullet-icon" />
+              <span>Full-Stack &amp; AI Pipeline Engineering Experience</span>
+            </div>
+          </div>
+
+          <div className="resume-actions-row">
+            <a
+              className="editorial-button editorial-button-dark"
+              href={PROFILE.resumePdf}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <Eye size={15} /> VIEW RESUME
+            </a>
+            <a
+              className="editorial-button"
+              href={PROFILE.resumePdf}
+              download="Harsh_Sharma_Resume.pdf"
+            >
+              <Download size={15} /> DOWNLOAD RESUME
+            </a>
+          </div>
         </div>
 
-        <div className="max-w-4xl mx-auto">
-          {/* Resume Card */}
-          <div className="bg-black border border-red-500/20 rounded-2xl p-8 shadow-lg shadow-red-500/10">
-            <div className="flex items-start gap-6">
-              <div className="p-4 bg-[#0a0a0f] border border-red-500/30 rounded-xl">
-                <FileText className="w-12 h-12 text-red-500" />
-              </div>
+        {/* Certifications Card */}
+        <div className="certifications-card">
+          <div className="cert-header">
+            <Award size={20} className="cert-header-icon" />
+            <h3>VERIFIED CERTIFICATIONS</h3>
+          </div>
 
-              <div className="flex-1">
-                <h3 className="text-2xl text-white mb-2 font-semibold">
-                  Harsh Sharma — Resume
-                </h3>
-
-                <p className="text-gray-400 mb-6 leading-relaxed">
-                  View or download my resume to explore my education, technical
-                  skills, certifications, projects, and hackathon experience.
-                </p>
-
-                {/* Highlights */}
-                <div className="space-y-3 mb-8">
-                  {[
-                    "Computer Science Engineering Student",
-                    "AI/ML Intern at CodSoft",
-                    "AWS Certified Cloud Practitioner",
-                    "IBM Java Developer & AI Engineering Certified",
-                    "Google Advanced Data Analytics Certified",
-                  ].map((item) => (
-                    <div key={item} className="flex items-center gap-3">
-                      <span className="text-red-500">✓</span>
-                      <span className="text-gray-400">{item}</span>
-                    </div>
-                  ))}
+          <div className="cert-list">
+            {CERTIFICATIONS.map((cert) => (
+              <div key={cert.title} className="cert-item">
+                <div className="cert-details">
+                  <strong className="cert-title">{cert.title}</strong>
+                  <span className="cert-issuer">{cert.issuer}</span>
                 </div>
-
-                {/* Action Buttons */}
-                <div className="flex flex-wrap gap-4">
-                  {/* View */}
+                {cert.pdf ? (
                   <a
-                    href="/resume/harshresume.pdf"
+                    href={cert.pdf}
                     target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-6 py-3 border border-red-500/40 text-red-400 rounded-full hover:bg-red-500/10 transition-all duration-300 font-medium"
+                    rel="noreferrer"
+                    className="cert-verify-badge"
                   >
-                    <Eye className="w-4 h-4" />
-                    View Resume
+                    VERIFIED ↗
                   </a>
-
-                  {/* Download */}
-                  <a
-                    href="/resume/harshresume.pdf"
-                    download
-                    className="inline-flex items-center gap-2 px-6 py-3 bg-red-600 text-white rounded-full hover:bg-red-500 transition-all duration-300 shadow-lg shadow-red-500/30 font-medium"
-                  >
-                    <Download className="w-4 h-4" />
-                    Download Resume
-                  </a>
-                </div>
+                ) : (
+                  <span className="cert-badge">VERIFIED</span>
+                )}
               </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>

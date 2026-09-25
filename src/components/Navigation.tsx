@@ -1,101 +1,90 @@
 import { useState, useEffect } from "react";
+import { ArrowUpRight, Menu, X } from "lucide-react";
+import { PROFILE } from "@/data/profile";
 
 export function Navigation() {
-  const [activeSection, setActiveSection] = useState("home");
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
+    let frame = 0;
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-
-      const sections = [
-        "home",
-        "about",
-        "skills",
-        "projects",
-        "resume",
-        "contact",
-      ];
-      const scrollPosition = window.scrollY + 100;
-
-      for (const section of sections) {
-        const element = document.getElementById(section);
-        if (element) {
-          const { offsetTop, offsetHeight } = element;
-          if (
-            scrollPosition >= offsetTop &&
-            scrollPosition < offsetTop + offsetHeight
-          ) {
-            setActiveSection(section);
-            break;
-          }
-        }
-      }
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => setScrolled(window.scrollY > 40));
     };
-
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    handleScroll();
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
   const navItems = [
-    { id: "home", label: "Home" },
-    { id: "about", label: "About" },
-    { id: "skills", label: "Skills" },
-    { id: "projects", label: "Projects" },
-    { id: "resume", label: "Resume" },
-    { id: "contact", label: "Contact" },
+    { label: "ABOUT", href: "#about" },
+    { label: "SKILLS", href: "#skills" },
+    { label: "TUTORIALS", href: "#tutorials" },
+    { label: "PROJECTS", href: "#projects" },
+    { label: "CONTACT", href: "#contact" },
   ];
 
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? "bg-[#030014]/50/95 backdrop-blur-xl shadow-lg shadow-violet-500/10 border-b border-violet-500/20"
-          : "bg-transparent"
-      }`}
-    >
-      <div className="max-w-[1440px] mx-auto px-8 py-4 flex items-center justify-between">
-        <div className="text-xl tracking-tight flex items-center cursor-pointer" onClick={() => scrollToSection('home')}>
-          <span className="text-white font-bold text-3xl hover:text-violet-400 transition-colors duration-300 tracking-tighter">
-            Harsh<span className="text-violet-500 text-4xl leading-none">.</span>
-          </span>
-        </div>
-
-        <ul className="flex items-center gap-8">
-          {navItems.map((item) => (
-            <li key={item.id}>
-              <button
-                onClick={() => scrollToSection(item.id)}
-                className={`transition-all duration-300 relative ${
-                  activeSection === item.id
-                    ? "text-white font-medium"
-                    : "text-gray-400 hover:text-violet-500"
-                }`}
-              >
-                {item.label.split("").map((char, index) => (
-                  <span
-                    key={index}
-                    className="inline-block transition-all duration-200 hover:scale-125 hover:-translate-y-1 hover:text-violet-500"
-                  >
-                    {char}
-                  </span>
-                ))}
-
-                {activeSection === item.id && (
-                  <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-violet-500 rounded-full shadow-[0_0_8px_rgba(239,68,68,0.6)]" />
-                )}
-              </button>
-            </li>
-          ))}
-        </ul>
+    <header className={`editorial-header ${scrolled ? "is-scrolled" : ""}`}>
+      <div className="nav-left">
+        <a href="#top" className="editorial-logo" aria-label="Harsh Sharma home">
+          harsh<span>.</span>
+        </a>
       </div>
-    </nav>
+
+      <div className="nav-center">
+        <span className="editorial-system-label">00 / PERSONAL SYSTEM</span>
+      </div>
+
+      <nav className="editorial-nav nav-right" aria-label="Primary navigation">
+        {navItems.map((item) => (
+          <a key={item.label} href={item.href}>
+            {item.label}
+          </a>
+        ))}
+        <a className="editorial-header-link" href={`mailto:${PROFILE.email}`}>
+          LET&apos;S TALK <ArrowUpRight size={14} />
+        </a>
+      </nav>
+
+      {/* Mobile Menu Toggle Button */}
+      <button
+        className="mobile-menu-toggle"
+        onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+        aria-label="Toggle navigation menu"
+        aria-expanded={mobileMenuOpen}
+      >
+        {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
+      </button>
+
+      {/* Mobile Navigation Drawer */}
+      {mobileMenuOpen && (
+        <div className="mobile-nav-drawer">
+          <div className="mobile-system-tag">00 / PERSONAL SYSTEM</div>
+          <nav>
+            {navItems.map((item) => (
+              <a
+                key={item.label}
+                href={item.href}
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {item.label}
+              </a>
+            ))}
+            <a
+              className="mobile-talk-btn"
+              href={`mailto:${PROFILE.email}`}
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              LET&apos;S TALK <ArrowUpRight size={16} />
+            </a>
+          </nav>
+        </div>
+      )}
+    </header>
   );
 }

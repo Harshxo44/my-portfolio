@@ -1,118 +1,124 @@
-import { ExternalLink, Github } from "lucide-react";
+import { useState } from "react";
+import { motion, useReducedMotion } from "framer-motion";
+import { PROJECTS, Project } from "@/data/projects";
+import { ProjectCaseStudyModal } from "./ProjectCaseStudyModal";
+import { ArrowUpRight, Plus, Eye } from "lucide-react";
 
 export function ProjectsSection() {
-  const projects = [
-    {
-      title: "AI/ML Intern — CodSoft",
-      description:
-        "Developed machine learning solutions, worked on Python-based ML projects, and applied classification/regression algorithms to practical datasets during the internship.",
-      techStack: ["Python", "Machine Learning", "Data Analysis"],
-      live: "",
-      github: "https://github.com/Harshxo44",
-    },
-    {
-      title: "DubAI Studio — AI Video Dubbing Platform",
-      description:
-        "Architected an end-to-end AI-powered multilingual video dubbing pipeline supporting 10+ languages with automated transcription, translation, and voice cloning. Integrated Faster Whisper, XTTS-v2, OpenVoice V2, and Demucs.",
-      techStack: [
-        "Node.js",
-        "Express.js",
-        "Python",
-        "FFmpeg",
-        "XTTS-v2",
-        "Whisper",
-        "OpenVoice V2",
-        "Demucs",
-      ],
-      live: "",
-      github: "https://github.com/Harshxo44",
-    },
-    {
-      title: "DriveLedger — Fleet Profit Management System",
-      description:
-        "Developed a cross-platform financial management application featuring role-based workflow architecture. Integrated real-time data synchronization using Firebase Cloud Firestore and designed interactive analytics dashboards.",
-      techStack: ["Flutter", "Firebase", "Cloud Firestore", "Dart", "FL Chart"],
-      live: "",
-      github: "https://github.com/Harshxo44",
-    },
-    {
-      title: "More Projects on GitHub",
-      description:
-        "Explore more of my projects, experiments, and learning work on my GitHub profile.",
-      techStack: ["GitHub"],
-      live: "https://github.com/Harshxo44",
-      github: "https://github.com/Harshxo44",
-    },
-  ];
+  const [revealedProjectId, setRevealedProjectId] = useState<string | null>(null);
+  const [activeModalProject, setActiveModalProject] = useState<Project | null>(null);
+  const reduceMotion = useReducedMotion();
+
+  const handleCardClick = (project: Project) => {
+    // If not revealed yet (e.g. mobile tap), reveal first
+    if (revealedProjectId !== project.id) {
+      setRevealedProjectId(project.id);
+    } else {
+      // If already revealed, open the case study modal
+      setActiveModalProject(project);
+    }
+  };
 
   return (
-    <section
-      id="projects"
-      className="min-h-screen flex items-center justify-center bg-[#030014]/50 border-t border-violet-500/20"
-    >
-      <div className="max-w-[1440px] w-full px-8 py-20">
-        {/* Header */}
-        <div className="mb-12">
-          <span className="text-violet-500 text-sm tracking-wider uppercase font-semibold">
-            Projects
-          </span>
-          <h2 className="text-5xl text-white mt-2 font-bold">Featured Work</h2>
+    <section id="projects" className="editorial-section projects-section">
+      <motion.div
+        initial={reduceMotion ? false : { opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.15 }}
+        transition={{ duration: 0.6 }}
+      >
+        <span className="editorial-index">04 / SELECTED WORK</span>
+        <div className="section-heading split-heading">
+          <h2>Engineering &amp; <em>Systems Work.</em></h2>
+          <p>
+            Real applications built with intention. Hover or tap any project to reveal details, then open the complete system case study.
+          </p>
         </div>
+      </motion.div>
 
-        {/* Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((project) => (
-            <div
-              key={project.title}
-              className="bg-[#0a002a]/60 border border-violet-500/20 rounded-2xl p-6 hover:border-violet-500/40 transition-all duration-300 shadow-xl shadow-violet-500/10 hover:shadow-2xl"
+      <div className="project-list">
+        {PROJECTS.map((project) => {
+          const isRevealed = revealedProjectId === project.id;
+          return (
+            <motion.article
+              key={project.id}
+              layout
+              className={`project-row ${isRevealed ? "is-revealed" : ""}`}
+              onMouseEnter={() => setRevealedProjectId(project.id)}
             >
-              <h3 className="text-xl text-white mb-3 font-semibold">
-                {project.title}
-              </h3>
-
-              <p className="text-gray-400 mb-4 leading-relaxed">
-                {project.description}
-              </p>
-
-              {/* Tech stack */}
-              <div className="flex flex-wrap gap-2 mb-6">
-                {project.techStack.map((tech) => (
-                  <span
-                    key={tech}
-                    className="px-2 py-1 bg-[#030014] border border-violet-500/30 rounded text-xs text-gray-300"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-
-              {/* Actions */}
-              <div className="flex items-center gap-3">
-                {project.live && (
-                  <a
-                    href={project.live}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-4 py-2 bg-violet-600 text-white rounded-full hover:bg-violet-500 transition-all text-sm"
-                  >
-                    <ExternalLink className="w-4 h-4" />
-                    Visit
-                  </a>
-                )}
-
-                <a
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-2 border border-violet-500/40 text-violet-400 rounded-full hover:bg-violet-500/10 transition-all"
+              <div
+                className="project-trigger"
+                onClick={() => handleCardClick(project)}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    handleCardClick(project);
+                  }
+                }}
+              >
+                <span className="project-number">{project.number}</span>
+                <span className="project-meta">{project.category}</span>
+                <span className="project-title">{project.title}</span>
+                <span className="project-summary">{project.summary}</span>
+                <button
+                  className="project-toggle"
+                  aria-label={`Open case study for ${project.title}`}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setActiveModalProject(project);
+                  }}
                 >
-                  <Github className="w-4 h-4" />
-                </a>
+                  <Plus size={20} className="toggle-icon" />
+                </button>
               </div>
-            </div>
-          ))}
-        </div>
+
+              {/* Revealed Content Drawer */}
+              {isRevealed && (
+                <motion.div
+                  className="project-detail"
+                  initial={reduceMotion ? false : { opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: "auto" }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <p className="project-detail-text">{project.tagline}</p>
+                  
+                  <div className="project-stack">
+                    {project.technologies.map((tech) => (
+                      <span key={tech} className="stack-pill">{tech}</span>
+                    ))}
+                  </div>
+
+                  <div className="project-actions-row">
+                    <button
+                      className="editorial-button editorial-button-dark"
+                      onClick={() => setActiveModalProject(project)}
+                    >
+                      <Eye size={15} /> VIEW CASE STUDY
+                    </button>
+                    
+                    <a
+                      className="editorial-text-button"
+                      href={project.github}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      GITHUB REPOSITORY <ArrowUpRight size={15} />
+                    </a>
+                  </div>
+                </motion.div>
+              )}
+            </motion.article>
+          );
+        })}
       </div>
+
+      {/* Case Study Modal */}
+      <ProjectCaseStudyModal
+        project={activeModalProject}
+        onClose={() => setActiveModalProject(null)}
+      />
     </section>
   );
 }
