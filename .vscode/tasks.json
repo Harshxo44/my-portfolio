@@ -49,6 +49,17 @@
 			"command": "npm run build",
 			"isBackground": false,
 			"problemMatcher": []
+		},
+		{
+			"label": "Update Velora article PDF",
+			"type": "shell",
+			"command": "cmd",
+			"args": [
+				"/c",
+				"copy /Y \"C:\\My Things\\1\\Artical\\Velora_Engineering_Article.pdf\" \"C:\\My Things\\1\\public\\articles\\velora-engineering-article.pdf\""
+			],
+			"isBackground": false,
+			"problemMatcher": []
 		}
 	]
 }

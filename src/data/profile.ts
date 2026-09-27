@@ -104,6 +104,7 @@ export interface TutorialItem {
   title: string;
   summary: string;
   topics: string[];
+  articleUrl?: string;
 }
 
 export const TUTORIALS: TutorialItem[] = [
@@ -120,6 +121,7 @@ export const TUTORIALS: TutorialItem[] = [
     title: "Designing OBD-II Diagnostic Services in Java 21",
     summary: "Connecting hardware dongles to Spring Boot backends with read-only safety boundaries.",
     topics: ["Java 21", "Spring Boot", "BLE", "OBD-II"],
+    articleUrl: "/articles/velora-engineering-article.pdf",
   },
   {
     number: "03",

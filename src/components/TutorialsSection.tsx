@@ -37,10 +37,21 @@ export function TutorialsSection() {
                   <span key={topic}>{topic}</span>
                 ))}
               </div>
-              <button className="editorial-text-button" type="button" disabled aria-disabled="true">
-                <BookOpen size={14} /> READ ARTICLE <ArrowUpRight size={14} />
-                <small className="coming-soon-tag">COMING SOON</small>
-              </button>
+              {tutorial.articleUrl ? (
+                <a
+                  className="editorial-text-button"
+                  href={tutorial.articleUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <BookOpen size={14} /> READ ARTICLE <ArrowUpRight size={14} />
+                </a>
+              ) : (
+                <button className="editorial-text-button" type="button" disabled aria-disabled="true">
+                  <BookOpen size={14} /> READ ARTICLE <ArrowUpRight size={14} />
+                  <small className="coming-soon-tag">COMING SOON</small>
+                </button>
+              )}
             </div>
           </article>
         ))}
