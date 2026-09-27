@@ -14,5 +14,5 @@ export const SITE_DATA = {
   github: "https://github.com/Harshxo44",
   linkedin: "https://www.linkedin.com/in/harshxo44/",
   instagram: "https://www.instagram.com/harshh.ok/",
-  resumePdf: "/resume/harshresume.pdf",
+  resumePdf: "/resume/Harsh_Final_Resume.pdf",
 };

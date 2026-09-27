@@ -26,7 +26,7 @@ export const PROFILE: ProfileData = {
   github: "https://github.com/Harshxo44",
   linkedin: "https://www.linkedin.com/in/harshxo44/",
   instagram: "https://www.instagram.com/harshh.ok/",
-  resumePdf: "/resume/harshresume.pdf",
+  resumePdf: "/resume/Harsh_Final_Resume.pdf",
   bioIntro: `I'm Harsh Sharma — a Computer Science Engineering student who gets curious about almost everything I haven't tried yet. I like exploring new technologies, chasing unfamiliar problems, and turning ideas into things I can actually build.`,
   personalPhilosophy: `What keeps me moving is simple: learn something today that I couldn't do yesterday, then use it to build something better tomorrow.`,
   handwrittenLine: `— curious about what's next.`,
@@ -35,6 +35,45 @@ export const PROFILE: ProfileData = {
 
 What keeps me fascinated by building is progress: learning something today that I couldn't do yesterday, and using it to build something better tomorrow.`,
 };
+
+export interface ResumeVariant {
+  title: string;
+  role: string;
+  filename: string;
+  path: string;
+  format: "PDF" | "DOCX";
+}
+
+export const RESUME_VARIANTS: ResumeVariant[] = [
+  {
+    title: "Official Engineering Resume",
+    role: "Full-Stack & CS Engineering",
+    filename: "Harsh_Final_Resume.pdf",
+    path: "/resume/Harsh_Final_Resume.pdf",
+    format: "PDF",
+  },
+  {
+    title: "Software Developer Resume",
+    role: "Software Engineering & Systems",
+    filename: "Harsh_Sharma_Resume_SoftwareDeveloper.docx",
+    path: "/resume/Harsh_Sharma_Resume_SoftwareDeveloper.docx",
+    format: "DOCX",
+  },
+  {
+    title: "AI / ML Engineer Resume",
+    role: "AI/ML Systems & Data Pipelines",
+    filename: "Harsh_Sharma_Resume_AIML.docx",
+    path: "/resume/Harsh_Sharma_Resume_AIML.docx",
+    format: "DOCX",
+  },
+  {
+    title: "Data Analyst Resume",
+    role: "Data Analytics & Engineering",
+    filename: "Harsh_Sharma_Resume_DataAnalyst.docx",
+    path: "/resume/Harsh_Sharma_Resume_DataAnalyst.docx",
+    format: "DOCX",
+  },
+];
 
 export interface CapabilityCategory {
   id: string;

@@ -1,6 +1,6 @@
 import { motion, useReducedMotion } from "framer-motion";
-import { PROFILE, CERTIFICATIONS } from "@/data/profile";
-import { Download, Eye, FileText, Award, CheckCircle2 } from "lucide-react";
+import { PROFILE, CERTIFICATIONS, RESUME_VARIANTS } from "@/data/profile";
+import { Download, Eye, FileText, Award, CheckCircle2, FileSpreadsheet } from "lucide-react";
 
 export function ResumeSection() {
   const reduceMotion = useReducedMotion();
@@ -17,7 +17,7 @@ export function ResumeSection() {
         <div className="section-heading">
           <h2>Resume &amp; <em>Certifications.</em></h2>
           <p>
-            Official academic credentials, verified certifications, and software engineering capabilities.
+            Official academic credentials, role-tailored resumes, and verified software engineering capabilities.
           </p>
         </div>
       </motion.div>
@@ -65,15 +65,36 @@ export function ResumeSection() {
               target="_blank"
               rel="noreferrer"
             >
-              <Eye size={15} /> VIEW RESUME
+              <Eye size={15} /> VIEW RESUME (PDF)
             </a>
             <a
               className="editorial-button"
               href={PROFILE.resumePdf}
-              download="Harsh_Sharma_Resume.pdf"
+              download="Harsh_Final_Resume.pdf"
             >
-              <Download size={15} /> DOWNLOAD RESUME
+              <Download size={15} /> DOWNLOAD MAIN RESUME
             </a>
+          </div>
+
+          {/* Role-Specific Resume Downloads */}
+          <div className="role-resumes-wrapper" style={{ marginTop: '32px', paddingTop: '24px', borderTop: '1px solid var(--line)' }}>
+            <h4 style={{ fontSize: '13px', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--ink)' }}>
+              <FileSpreadsheet size={16} /> Specialized Role Resumes
+            </h4>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '12px' }}>
+              {RESUME_VARIANTS.slice(1).map((variant) => (
+                <a
+                  key={variant.filename}
+                  href={variant.path}
+                  download={variant.filename}
+                  className="editorial-button"
+                  style={{ fontSize: '12px', padding: '10px 14px', justifyContent: 'space-between', width: '100%' }}
+                >
+                  <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{variant.title}</span>
+                  <Download size={13} style={{ flexShrink: 0 }} />
+                </a>
+              ))}
+            </div>
           </div>
         </div>
 
