@@ -48,6 +48,7 @@ export function ProjectsSection() {
             >
               <div
                 className="project-trigger"
+                data-cursor="VIEW"
                 onClick={() => handleCardClick(project)}
                 role="button"
                 tabIndex={0}

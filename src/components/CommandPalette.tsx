@@ -9,6 +9,7 @@ import {
   Mail,
   Zap,
   Check,
+  Github,
 } from "lucide-react";
 import {
   CommandDialog,
@@ -107,6 +108,11 @@ export function CommandPalette({ open: externalOpen, onOpenChange }: CommandPale
             <span>Projects</span>
             <CommandShortcut className="font-mono text-xs text-zinc-500">⌘2</CommandShortcut>
           </CommandItem>
+          <CommandItem onSelect={() => navigateTo("drivemind")}>
+            <Cpu className="mr-2 h-4 w-4 text-orange-400" />
+            <span>DriveMind</span>
+            <CommandShortcut className="font-mono text-xs text-zinc-500">/drivemind</CommandShortcut>
+          </CommandItem>
           <CommandItem onSelect={() => navigateTo("aiml")}>
             <Cpu className="mr-2 h-4 w-4 text-purple-400" />
             <span>AI / ML</span>
@@ -126,6 +132,16 @@ export function CommandPalette({ open: externalOpen, onOpenChange }: CommandPale
             <FileText className="mr-2 h-4 w-4 text-amber-400" />
             <span>Resume</span>
             <CommandShortcut className="font-mono text-xs text-zinc-500">⌘6</CommandShortcut>
+          </CommandItem>
+          <CommandItem onSelect={() => navigateTo("archive")}>
+            <FileText className="mr-2 h-4 w-4 text-orange-400" />
+            <span>Archive</span>
+            <CommandShortcut className="font-mono text-xs text-zinc-500">/archive</CommandShortcut>
+          </CommandItem>
+          <CommandItem onSelect={() => window.open("https://github.com/Harshxo44", "_blank", "noopener,noreferrer")}>
+            <Github className="mr-2 h-4 w-4 text-cyan-400" />
+            <span>GitHub</span>
+            <CommandShortcut className="font-mono text-xs text-zinc-500">/github</CommandShortcut>
           </CommandItem>
           <CommandItem onSelect={() => navigateTo("contact")}>
             <Mail className="mr-2 h-4 w-4 text-rose-400" />

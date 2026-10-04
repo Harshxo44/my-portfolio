@@ -131,7 +131,7 @@ export const PROOF_IN_PRACTICE: ProofItem[] = [
   {
     category: "SYSTEM DESIGN & AUTOMOTIVE",
     projects: [
-      { title: "DriveMind (Velora)", id: "drivemind" },
+      { title: "DriveMind", id: "drivemind" },
       { title: "EstateOps (DriveLedger)", id: "estateops" },
     ],
   },

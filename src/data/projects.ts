@@ -33,12 +33,12 @@ export const PROJECTS: Project[] = [
   {
     id: "drivemind",
     number: "01",
-    title: "DriveMind (Velora)",
+    title: "DriveMind",
     category: "AI / AUTOMOTIVE / SYSTEMS",
     tagline: "Connected Automotive Intelligence Platform & Diagnostic Engine",
     summary: "A telemetry and diagnostic engine connecting OBD-II data to safety-focused driver guidance.",
     technologies: ["Java 21", "Spring Boot", "Android BLE", "ESP32 OBD-II", "STN1110/ELM327", "H2 / PostgreSQL"],
-    github: "https://github.com/Harshxo44/Velora",
+    github: "https://github.com/Harshxo44/DriveMind",
     isAi: true,
     archFlow: [
       { label: "1. ESP32 Dongle", sub: "OBD-II CAN Bus Ingestion" },
@@ -104,7 +104,7 @@ export const PROJECTS: Project[] = [
     tagline: "Water Safety & Field Diagnostic Environmental Engine",
     summary: "Field water quality sample recording, safety condition scoring, and open map visualization.",
     technologies: ["Java", "Android MVVM", "Node.js", "Express", "Firebase", "Room", "OSMdroid"],
-    github: "https://github.com/Harshxo44/Swaas",
+    github: "https://github.com/Harshxo44/Swaas_app",
     isAi: true,
     archFlow: [
       { label: "1. Field Sample", sub: "pH, TDS, Contaminants" },

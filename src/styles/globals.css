@@ -467,6 +467,70 @@
 .editorial-marquee { background: var(--accent); color: #fffaf0; border-bottom-color: var(--line); }
 .editorial-footer { background: #090b0c; color: var(--paper); }
 
+/* Signature identity poster, horizontal project rail, and archive */
+.poster-section {
+  padding: clamp(70px, 10vw, 150px) clamp(20px, 8vw, 140px);
+  background: #101415;
+  color: #f4e9d7;
+  border-bottom: 1px solid rgba(244,233,215,.16);
+}
+.poster-intro { display: flex; justify-content: space-between; gap: 30px; margin-bottom: 34px; }
+.poster-intro .editorial-index { color: #cf583e; }
+.poster-intro p { max-width: 360px; margin: 0; color: #a5a39a; font: 13px/1.6 "Courier New", monospace; }
+.identity-poster {
+  --poster-x: 0px; --poster-y: 0px;
+  position: relative; min-height: min(670px, 68vw); overflow: hidden; isolation: isolate;
+  padding: clamp(20px, 4vw, 58px); border: 1px solid rgba(244,233,215,.32);
+  background: #191e20; box-shadow: 15px 15px 0 #cf583e;
+}
+.poster-grid { position: absolute; inset: 0; z-index: -2; opacity: .6; background-image: linear-gradient(rgba(244,233,215,.09) 1px, transparent 1px), linear-gradient(90deg, rgba(244,233,215,.09) 1px, transparent 1px); background-size: 42px 42px; transform: translate3d(var(--poster-x), var(--poster-y), 0); transition: transform .2s ease-out; }
+.poster-scanline { position: absolute; inset: 0; z-index: -1; opacity: .2; pointer-events: none; background: repeating-linear-gradient(0deg, transparent 0 4px, rgba(244,233,215,.12) 5px); }
+.poster-topline, .poster-footer { display: flex; justify-content: space-between; font: 10px "Courier New", monospace; letter-spacing: .13em; color: #a5a39a; }
+.poster-topline { padding-bottom: 18px; border-bottom: 1px solid rgba(244,233,215,.25); }
+.poster-copy { position: relative; z-index: 2; margin-top: clamp(70px, 10vw, 130px); }
+.poster-kicker { display: block; margin-bottom: 18px; color: #cf583e; font: 11px "Courier New", monospace; letter-spacing: .14em; }
+.poster-copy h2 { margin: 0; font-size: clamp(4.3rem, 12vw, 12rem); line-height: .77; letter-spacing: -.09em; }
+.poster-copy h2 span, .poster-copy h2 em { display: block; font-style: normal; }
+.poster-copy h2 em { margin-left: 9vw; color: #cf583e; -webkit-text-stroke: 1px #cf583e; color: transparent; }
+.poster-copy p { margin: 30px 0 0; font: 12px "Courier New", monospace; letter-spacing: .14em; }
+.poster-copy strong { color: #cf583e; }
+.poster-stack { position: absolute; top: 29%; right: 7%; display: flex; flex-direction: column; gap: 7px; font: 11px "Courier New", monospace; letter-spacing: .1em; transform: translate3d(calc(var(--poster-x) * -1), calc(var(--poster-y) * -1), 0); transition: transform .2s ease-out; }
+.poster-stack span { display: flex; gap: 12px; color: #d7cbb7; }
+.poster-stack b { color: #cf583e; font-weight: normal; }
+.poster-terminal { position: absolute; right: 7%; bottom: 18%; display: flex; flex-direction: column; gap: 6px; color: #a5a39a; font: 10px "Courier New", monospace; }
+.poster-terminal span:first-child, .poster-terminal i { color: #cf583e; font-style: normal; }
+.poster-orbit { position: absolute; border: 1px solid rgba(207,88,62,.55); border-radius: 50%; pointer-events: none; }
+.poster-orbit-one { width: 30vw; height: 30vw; right: -5vw; top: 16%; animation: poster-orbit 16s linear infinite; }
+.poster-orbit-two { width: 20vw; height: 20vw; right: 5vw; top: 24%; border-color: rgba(244,233,215,.25); animation: poster-orbit 11s linear reverse infinite; }
+.poster-footer { position: absolute; left: clamp(20px, 4vw, 58px); right: clamp(20px, 4vw, 58px); bottom: 22px; padding-top: 15px; border-top: 1px solid rgba(244,233,215,.25); }
+@keyframes poster-orbit { to { transform: rotate(360deg); } }
+.project-rail-section { padding: clamp(75px, 10vw, 140px) 0; overflow: hidden; background: #d8d1c5; border-bottom: 1px solid var(--line); }
+.project-rail-heading { padding: 0 clamp(20px, 8vw, 140px); }
+.project-rail-heading .editorial-index { color: var(--accent); }
+.project-rail-heading h2 { max-width: 720px; margin: 18px 0 10px; font-size: clamp(2.7rem, 7vw, 7rem); line-height: .9; letter-spacing: -.08em; }
+.project-rail-heading h2 em { color: var(--accent); font-style: normal; }
+.project-rail-heading p { max-width: 410px; color: var(--muted); font-size: 14px; line-height: 1.5; }
+.project-rail { display: flex; gap: 18px; overflow-x: auto; padding: 50px clamp(20px, 8vw, 140px) 20px; scroll-snap-type: x proximity; scrollbar-width: thin; }
+.rail-card { flex: 0 0 min(350px, 78vw); min-height: 385px; padding: 18px; scroll-snap-align: start; border: 1px solid var(--ink); background: var(--paper); box-shadow: 8px 8px 0 rgba(23,23,23,.12); transition: box-shadow .25s ease; }
+.rail-card:hover { box-shadow: 13px 13px 0 rgba(23,23,23,.16); }
+.rail-card-visual { position: relative; display: flex; flex-direction: column; justify-content: space-between; height: 230px; padding: 18px; overflow: hidden; color: #f4e9d7; background: #101415; }
+.rail-card-visual::after { position: absolute; inset: 0; content: ""; opacity: .25; background: linear-gradient(135deg, transparent 35%, #cf583e 36% 37%, transparent 38% 52%, #cf583e 53% 54%, transparent 55%); }
+.rail-card-2 .rail-card-visual { background: #2f6f91; }.rail-card-3 .rail-card-visual { background: #cf583e; }.rail-card-4 .rail-card-visual { background: #353a38; }.rail-card-external .rail-card-visual { background: #575547; }
+.rail-card-visual span, .rail-card-visual i { z-index: 1; font: 11px "Courier New", monospace; letter-spacing: .12em; font-style: normal; }
+.rail-card-visual strong { z-index: 1; font-size: clamp(2.3rem, 5vw, 4.2rem); letter-spacing: -.08em; }
+.rail-card-meta { display: flex; justify-content: space-between; gap: 10px; margin-top: 18px; color: var(--accent); font: 10px "Courier New", monospace; letter-spacing: .1em; }
+.rail-card p { min-height: 42px; margin: 14px 0; font-size: 15px; line-height: 1.35; }
+.rail-card small { display: flex; align-items: center; gap: 6px; color: var(--muted); font: 10px "Courier New", monospace; }
+.archive-section { background: #202829; color: #f4e9d7; }
+.archive-section .editorial-index { color: #cf583e; }.archive-section .section-heading p { color: #a5a39a; }
+.archive-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-top: 52px; }
+.archive-file { min-height: 185px; display: flex; flex-direction: column; padding: 20px; color: var(--ink); border: 1px solid #171717; background: #eadcc1; box-shadow: 6px 6px 0 rgba(0,0,0,.22); transition: background .25s ease; }
+.archive-file:hover { background: #fffaf0; }.archive-file-top, .archive-file-action { display: flex; justify-content: space-between; align-items: center; }
+.archive-file-top { color: var(--accent); font: 11px "Courier New", monospace; }.archive-file-label { margin-top: 22px; color: var(--muted); font: 10px "Courier New", monospace; letter-spacing: .1em; }
+.archive-file strong { margin: 6px 0 18px; font-size: 16px; line-height: 1.2; }.archive-file-action { margin-top: auto; gap: 5px; justify-content: flex-start; color: var(--accent); font: 10px "Courier New", monospace; letter-spacing: .08em; }
+.cursor-system { position: fixed; top: 0; left: 0; z-index: 200; width: 12px; height: 12px; pointer-events: none; border: 1px solid #cf583e; border-radius: 50%; transform-origin: center; transition: width .2s ease, height .2s ease, background .2s ease; mix-blend-mode: difference; }
+.cursor-system.is-active { width: 78px; height: 78px; display: grid; place-items: center; color: #fffaf0; background: #cf583e; font: 9px "Courier New", monospace; letter-spacing: .08em; mix-blend-mode: normal; }
+
 /* Responsive Adjustments */
 @media (max-width: 1024px) {
   .nav-center { display: none; }
@@ -516,6 +580,14 @@
   .project-detail { padding: 8px 0 24px; }
   .tutorial-grid { grid-template-columns: 1fr; }
   .editorial-footer { flex-direction: column; align-items: flex-start; }
+  .poster-intro { display: block; }.poster-intro p { margin-top: 16px; }
+  .identity-poster { min-height: 600px; box-shadow: 8px 8px 0 #cf583e; }.poster-copy { margin-top: 110px; }
+  .poster-copy h2 { font-size: clamp(3.4rem, 17vw, 6.5rem); }.poster-copy h2 em { margin-left: 6vw; }
+  .poster-stack { top: auto; right: 20px; bottom: 105px; font-size: 9px; }.poster-terminal { left: 20px; right: auto; bottom: 105px; }
+  .poster-orbit-one { width: 70vw; height: 70vw; right: -25vw; top: 28%; }.poster-orbit-two { width: 48vw; height: 48vw; right: -8vw; top: 37%; }
+  .poster-footer { font-size: 8px; }.project-rail-heading h2 { font-size: clamp(2.8rem, 15vw, 5rem); }
+  .archive-grid { grid-template-columns: 1fr; }
+  .cursor-system { display: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {

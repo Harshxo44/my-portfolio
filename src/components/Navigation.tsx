@@ -25,6 +25,7 @@ export function Navigation() {
     { label: "SKILLS", href: "#skills" },
     { label: "TUTORIALS", href: "#tutorials" },
     { label: "PROJECTS", href: "#projects" },
+    { label: "ARCHIVE", href: "#archive" },
     { label: "CONTACT", href: "#contact" },
   ];
 
