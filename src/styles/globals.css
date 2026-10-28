@@ -478,6 +478,16 @@
 .contact-copy { color: #d7cbb7; }
 .contact-link-card { background: rgba(239, 227, 204, .95); color: var(--ink); }
 .contact-link-card:hover { background: #fffaf0; }
+.role-resumes-wrapper .editorial-button {
+  background: #f4e9d7;
+  color: #171717;
+  border-color: #171717;
+}
+.role-resumes-wrapper .editorial-button:hover {
+  background: #fffaf0;
+  color: #171717;
+  border-color: var(--accent);
+}
 .editorial-marquee { background: var(--accent); color: #fffaf0; border-bottom-color: var(--line); }
 .editorial-footer { background: #090b0c; color: var(--paper); }
 
