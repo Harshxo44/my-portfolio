@@ -448,6 +448,20 @@
 }
 .capability-node { background: #eadcc1; color: #171717; }
 .tech-badge { background: #f4e9d7; color: #171717; }
+.proof-project-item,
+.cert-item {
+  background: #101415;
+  color: #f4e9d7;
+}
+.proof-title,
+.cert-title { color: #f4e9d7; }
+.proof-arrow,
+.cert-issuer { color: #a5a39a; }
+.cert-verify-badge,
+.cert-badge {
+  color: #e49a72;
+  border-color: #cf583e;
+}
 .project-list { border-top-color: var(--ink); }
 .project-row { border-bottom-color: var(--line); }
 .project-row.is-revealed { background: rgba(239, 227, 204, .1); }
